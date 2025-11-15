@@ -1,10 +1,19 @@
-title: 我的个人网站
-description: 欢迎访问我的个人空间
+title: "Text" 
+description: "这是我的个人网站" 
+baseurl: ""
+url: "https://dsghbc.github.io"
+
 theme: minima  # GitHub 默认主题
+plugins:
+  - jekyll-feed
+
+author: "DSGH"
+email: "tai0@foxmail.com"
+github_username: DSGHBC
 
 # 设置链接
 repository: "你的用户名/你的用户名.github.io"
 
 # 构建设置
-markdown: kramdown
-permalink: pretty
+# markdown: kramdown
+# permalink: pretty
