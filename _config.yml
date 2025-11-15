@@ -1,0 +1,10 @@
+title: 我的个人网站
+description: 欢迎访问我的个人空间
+theme: minima  # GitHub 默认主题
+
+# 设置链接
+repository: "你的用户名/你的用户名.github.io"
+
+# 构建设置
+markdown: kramdown
+permalink: pretty
