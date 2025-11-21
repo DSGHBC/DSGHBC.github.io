@@ -1,4 +1,22 @@
-name: DSGH 
-markdown: kramdown
+author: DSGH 
+email: tai0@foxmail.com
 
 permalink: /blog/:year/:month/:day/:title
+
+# highlighter: rouge
+
+# markdown: kramdown
+
+# kramdown:
+#   input: GFM
+#   syntax_highlighter: rouge
+#   syntax_highlighter_opts:
+#     css_class: 'highlight'
+#     span:
+#       line_numbers: false
+#     block:
+#       line_numbers: true
+#       start_line: 1
+
+sass:
+  sytle: compressed
