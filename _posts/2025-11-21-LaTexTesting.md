@@ -51,14 +51,10 @@ f(x)=2x-1\\
 g(x)=\frac{2-f(x)}{3}\\
 h(x) \le a\\
 $$
+
 那么$I(x)=\frac{U}{R}*\dot{x}$就是行内公式。
 
 # mermaid 测试
-
-```mermaid
-graph LR
-现象-->结论
-```
 
 {% raw %}
 <div class="mermaid">

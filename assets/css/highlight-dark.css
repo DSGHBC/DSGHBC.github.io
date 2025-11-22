@@ -1,0 +1,186 @@
+/* ===== 1. 变量区：一次定义，全局通用 ===== */
+:root {
+    --code-bg: #0d1117;
+    /* 主背景 */
+    --code-fg: #c9d1d9;
+    /* 默认文字 */
+    --keyword: #ff7b72;
+    /* 关键字 */
+    --string: #a5d6ff;
+    /* 字符串 */
+    --number: #79c0ff;
+    /* 数字 */
+    --comment: #8b949e;
+    /* 注释 */
+    --function: #d2a8ff;
+    /* 函数名 */
+    --type: #ffa657;
+    /* 类型 */
+    --error-bg: #f85149;
+    /* 错误背景 */
+    --error-fg: #f0f6fc;
+    --add-bg: #238636;
+    /* diff 新增 */
+    --add-fg: #ffffff;
+    --del-bg: #da3633;
+    /* diff 删除 */
+    --del-fg: #ffffff;
+    --radius: 8px;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ===== 2. 框架层：code / pre / table ===== */
+.highlight {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border-radius: var(--radius);
+    padding: 16px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    box-shadow: inset 0 0 0 1px rgba(240, 246, 252, 0.1);
+}
+
+.highlight table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.highlight td {
+    padding: 0;
+    vertical-align: top;
+}
+
+.highlight pre {
+    margin: 0;
+    white-space: pre;
+    word-break: normal;
+    word-wrap: normal;
+}
+
+/* 行号列 */
+.highlight .gutter {
+    width: 42px;
+    user-select: none;
+    opacity: 0.6;
+    text-align: right;
+    padding-right: 12px;
+    color: var(--comment);
+}
+
+/* ===== 3. Token 着色：按语义映射 ===== */
+.highlight .k,
+/* keyword */
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kv {
+    color: var(--keyword);
+    font-weight: 600;
+}
+
+.highlight .s,
+.highlight .sa,
+/* string */
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .sx,
+.highlight .s1,
+.highlight .ss {
+    color: var(--string);
+}
+
+.highlight .m,
+.highlight .mb,
+/* number */
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .mx,
+.highlight .l,
+.highlight .ld {
+    color: var(--number);
+}
+
+.highlight .c,
+.highlight .ch,
+/* comment */
+.highlight .cd,
+.highlight .cm,
+.highlight .cp,
+.highlight .cpf,
+.highlight .c1,
+.highlight .cs {
+    color: var(--comment);
+    font-style: italic;
+}
+
+.highlight .nf,
+.highlight .fm {
+    /* function */
+    color: var(--function);
+}
+
+.highlight .nb,
+.highlight .nc,
+/* 类型/内置 */
+.highlight .no,
+.highlight .nn,
+.highlight .nt,
+.highlight .na {
+    color: var(--type);
+}
+
+.highlight .err {
+    /* 错误 */
+    background: var(--error-bg);
+    color: var(--error-fg);
+    border-radius: 2px;
+}
+
+/* ===== 4. Diff 场景 ===== */
+.highlight .gi {
+    /* 新增行 */
+    background: rgba(35, 134, 54, 0.15);
+    display: block;
+    padding: 0 4px;
+    border-left: 3px solid var(--add-bg);
+}
+
+.highlight .gd {
+    /* 删除行 */
+    background: rgba(218, 54, 51, 0.15);
+    display: block;
+    padding: 0 4px;
+    border-left: 3px solid var(--del-bg);
+}
+
+/* ===== 5. 可选增强 ===== */
+/* 滚动条 */
+.highlight::-webkit-scrollbar {
+    height: 8px;
+}
+
+.highlight::-webkit-scrollbar-thumb {
+    background: rgba(200, 200, 255, 0.2);
+    border-radius: 4px;
+}
+
+.highlight::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 选中文字 */
+.highlight ::selection {
+    background: rgba(56, 139, 253, 0.3);
+}

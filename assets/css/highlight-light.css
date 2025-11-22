@@ -1,0 +1,199 @@
+/* ========= 1. 变量区（亮色） ========= */
+:root {
+    --code-bg: #f6f8fa;
+    /* 代码块背景 */
+    --code-fg: #24292f;
+    /* 默认文字 */
+    --inline-bg: #eaeef2;
+    /* 行内代码背景 */
+    --inline-fg: #24292f;
+    /* 行内代码文字 */
+    --keyword: #d1242f;
+    /* 关键字 */
+    --string: #0a3069;
+    /* 字符串 */
+    --number: #0550ae;
+    /* 数字 */
+    --comment: #6e7781;
+    /* 注释 */
+    --function: #8250df;
+    /* 函数名 */
+    --type: #953800;
+    /* 类型 */
+    --error-bg: #ffebe9;
+    /* 错误背景 */
+    --error-fg: #d1242f;
+    --add-bg: #dafbe1;
+    /* diff 新增 */
+    --add-fg: #116329;
+    --del-bg: #ffebe9;
+    /* diff 删除 */
+    --del-fg: #82071e;
+    --radius: 6px;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ========= 2. 代码块：超窄边距 ========= */
+.highlight {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border-radius: var(--radius);
+    padding: 8px;
+    /* 整体压缩到 8 px */
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+}
+
+.highlight table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.highlight td {
+    padding: 0;
+    vertical-align: top;
+}
+
+.highlight pre {
+    margin: 0;
+    white-space: pre;
+}
+
+/* 行号列：超窄 */
+.highlight .gutter {
+    width: 32px;
+    /* 再砍 10 px */
+    user-select: none;
+    opacity: 0.7;
+    text-align: right;
+    padding-right: 6px;
+    /* 与代码仅 6 px 间隔 */
+    color: var(--comment);
+}
+
+/* ========= 3. Token 着色（亮色映射） ========= */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kv {
+    color: var(--keyword);
+    font-weight: 600;
+}
+
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .sx,
+.highlight .s1,
+.highlight .ss {
+    color: var(--string);
+}
+
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .mx,
+.highlight .l,
+.highlight .ld {
+    color: var(--number);
+}
+
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cm,
+.highlight .cp,
+.highlight .cpf,
+.highlight .c1,
+.highlight .cs {
+    color: var(--comment);
+    font-style: italic;
+}
+
+.highlight .nf,
+.highlight .fm {
+    color: var(--function);
+}
+
+.highlight .nb,
+.highlight .nc,
+.highlight .no,
+.highlight .nn,
+.highlight .nt,
+.highlight .na {
+    color: var(--type);
+}
+
+.highlight .err {
+    background: var(--error-bg);
+    color: var(--error-fg);
+    border-radius: 2px;
+}
+
+/* diff */
+.highlight .gi {
+    background: var(--add-bg);
+    color: var(--add-fg);
+    display: block;
+    padding: 0 4px;
+    border-left: 3px solid var(--add-fg);
+}
+
+.highlight .gd {
+    background: var(--del-bg);
+    color: var(--del-fg);
+    display: block;
+    padding: 0 4px;
+    border-left: 3px solid var(--del-fg);
+}
+
+/* ========= 4. 行内代码 ========= */
+/* 用法：直接写 <code class="inline">...</code> 或 Markdown 转义即可 */
+code.inline {
+    background: var(--inline-bg);
+    color: var(--inline-fg);
+    padding: 0.15em 0.4em 0.1em;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.925em;
+    /* 比正文字号小一点 */
+    word-break: break-word;
+    vertical-align: baseline;
+}
+
+/* 防止与代码块冲突 */
+.highlight code.inline {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+/* ========= 5. 滚动条美化（可选） ========= */
+.highlight::-webkit-scrollbar {
+    height: 6px;
+}
+
+.highlight::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .2);
+    border-radius: 3px;
+}
+
+.highlight::-webkit-scrollbar-track {
+    background: transparent;
+}
