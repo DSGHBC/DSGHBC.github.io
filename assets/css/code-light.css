@@ -1,6 +1,11 @@
+/* 
+代码区域的css文件配置
+代码块，行内代码的样式设计
+*/
+
 /* ========= 变量区（亮色） ========= */
 :root {
-    --code-bg: #f6f8fa;
+    --code-bg: #F9FAFB;
     /* 代码块背景 */
     --code-fg: #24292f;
     /* 默认文字 */
@@ -61,7 +66,6 @@
     white-space: pre;
 }
 
-/* 行号列 */
 .highlight .gutter {
     width: 32px;
     user-select: none;
@@ -69,6 +73,37 @@
     text-align: right;
     padding-right: 6px;
     color: var(--comment);
+    position: relative;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.highlight .gutter::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(0, 0, 0, .12);
+}
+
+.highlight .gutter span {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --gutter-border: rgba(255, 255, 255, .15);
+    }
+
+    .highlight .gutter::after {
+        background: var(--gutter-border);
+    }
 }
 
 .gl {
