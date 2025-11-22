@@ -1,0 +1,48 @@
+<!-- _includes/collapsible.html -->
+<details class="collapsible">
+  <summary>{{ include.summary }}</summary>
+  <div class="collapsible-content">
+    {{ include.content | markdownify }}
+  </div>
+</details>
+
+<!-- 可选：内联样式，或将其放在外部CSS文件中 -->
+<style>
+.collapsible {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin: 1.5em 0;
+  background: #f6f8fa;
+  overflow: hidden;
+}
+
+.collapsible summary {
+  padding: 12px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+}
+
+.collapsible summary:hover {
+  background-color: #eaedf1;
+}
+
+.collapsible[open] summary {
+  border-bottom: 1px solid #e1e4e8;
+  background: #ffffff;
+}
+
+.collapsible-content {
+  padding: 16px;
+  background: white;
+}
+
+.collapsible-content > *:first-child {
+  margin-top: 0;
+}
+
+.collapsible-content > *:last-child {
+  margin-bottom: 0;
+}
+</style>

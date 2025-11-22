@@ -1,6 +1,8 @@
 author: DSGH 
 email: tai0@foxmail.com
 
+layout: defalut
+
 permalink: /blog/:year/:month/:day/:title
 
 highlighter: rouge
