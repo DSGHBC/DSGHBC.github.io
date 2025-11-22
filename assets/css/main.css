@@ -2,42 +2,86 @@ body {
     margin: 60px auto;
     width: 70%;
 }
-nav ul, footer ul {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+
+nav ul,
+footer ul {
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
 }
-nav ul li, footer ul li {
+
+nav ul li,
+footer ul li {
     display: inline;
     margin-right: 20px;
 }
+
 a {
     text-decoration: none;
     color: #999;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 h1 {
     font-size: 3em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 }
+
 p {
     font-size: 1.5em;
     line-height: 1.4em;
     color: #333;
 }
+
 footer {
     border-top: 1px solid #d5d5d5;
     font-size: .8em;
 }
 
-ul.posts { 
-    margin: 20px auto 40px; 
+ul.posts {
+    margin: 20px auto 40px;
     font-size: 1.5em;
 }
 
 ul.posts li {
     list-style: none;
+}
+
+blockquote {
+    --quote-color: #dfe3e8;
+    /* 左侧竖条颜色 */
+    --quote-bg: #f6f8fa;
+    /* 背景色 */
+    --quote-width: 4px;
+    /* 竖条粗细 */
+    --radius: 6px;
+    /* 圆角 */
+
+    margin: 1.2em 0;
+    padding: .8em 1.2em .8em calc(1.2em + var(--quote-width));
+    background: var(--quote-bg);
+    border-left: var(--quote-width) solid var(--quote-color);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: #555;
+    font-style: normal;
+    position: relative;
+}
+
+/* 给嵌套引用增加层次感 */
+blockquote blockquote {
+    --quote-color: #c0c8d2;
+    --quote-bg: #fafbfc;
+}
+
+/* 引用内段落去掉多余间距 */
+blockquote p:first-child {
+    margin-top: 0;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
 }

@@ -1,4 +1,4 @@
-/* ========= 1. 变量区（亮色） ========= */
+/* ========= 变量区（亮色） ========= */
 :root {
     --code-bg: #f6f8fa;
     /* 代码块背景 */
@@ -33,13 +33,12 @@
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-/* ========= 2. 代码块：超窄边距 ========= */
+/* ========= 代码块 ========= */
 .highlight {
     background: var(--code-bg);
     color: var(--code-fg);
     border-radius: var(--radius);
-    padding: 8px;
-    /* 整体压缩到 8 px */
+    padding: 4px;
     overflow-x: auto;
     font-family: var(--font-mono);
     font-size: 0.875rem;
@@ -62,19 +61,21 @@
     white-space: pre;
 }
 
-/* 行号列：超窄 */
+/* 行号列 */
 .highlight .gutter {
     width: 32px;
-    /* 再砍 10 px */
     user-select: none;
     opacity: 0.7;
     text-align: right;
     padding-right: 6px;
-    /* 与代码仅 6 px 间隔 */
     color: var(--comment);
 }
 
-/* ========= 3. Token 着色（亮色映射） ========= */
+.gl {
+    width: 2%;
+}
+
+/* ========= Token 着色 ========= */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
@@ -146,7 +147,6 @@
     border-radius: 2px;
 }
 
-/* diff */
 .highlight .gi {
     background: var(--add-bg);
     color: var(--add-fg);
@@ -163,37 +163,21 @@
     border-left: 3px solid var(--del-fg);
 }
 
-/* ========= 4. 行内代码 ========= */
-/* 用法：直接写 <code class="inline">...</code> 或 Markdown 转义即可 */
-code.inline {
-    background: var(--inline-bg);
-    color: var(--inline-fg);
+/* 选中所有不在代码块里的 <code> */
+:not(.highlight)>code {
+    background: var(--inline-bg, #eaeef2);
+    color: var(--inline-fg, #24292f);
     padding: 0.15em 0.4em 0.1em;
     border-radius: 3px;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono, "SFMono-Regular", Consolas, monospace);
     font-size: 0.925em;
-    /* 比正文字号小一点 */
     word-break: break-word;
     vertical-align: baseline;
 }
 
-/* 防止与代码块冲突 */
-.highlight code.inline {
+/* 防止与 highlight 内部冲突 */
+.highlight code {
     background: transparent;
     padding: 0;
     color: inherit;
-}
-
-/* ========= 5. 滚动条美化（可选） ========= */
-.highlight::-webkit-scrollbar {
-    height: 6px;
-}
-
-.highlight::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, .2);
-    border-radius: 3px;
-}
-
-.highlight::-webkit-scrollbar-track {
-    background: transparent;
 }
