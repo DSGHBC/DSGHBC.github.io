@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "useMoment": false,
+      "file": "Markdown/BookList.md"
+    },
+    {
+      "useMoment": false,
+      "file": "Markdown/actionlist.md"
+    },
+    {
+      "useMoment": false,
+      "file": "Markdown/MOC-CPP语言全解.md"
+    }
+  ],
+  "useExistingPane": false,
+  "useHoverEditor": false
+}
