@@ -1,0 +1,52 @@
+<h1>算法初探 {{ include.title}}</h1>
+<details class="details">
+  <summary>点击查看本系列初衷</summary>
+  <div class="details-content">
+    <p>笔者自上大学开始，决定完整的，系统的学习一遍编程，尽管笔者之前零零散散的自学过很多东西，但由于所学颇杂，也确实需要系统的学习一遍。</p>
+    <p>所以笔者开始了从零开始的Cpp之路，这个系列的文章，其实是笔者从零之路的一个子篇。</p>
+    <p>这个系列的文章，致力于讲清楚，讲明白一个算法究竟是如何写出来的，究竟是如何优化好的。笔者会尽力避免出现<b>读者自证不难</b>之类的语言。换言之，笔者希望写的是一篇把饭喂到读者口中的文章。</p>
+    <p>这对笔者是一个考验，但是笔者自当竭尽全力而为之。</p>
+    <p>本系列同样关注于算法的<b>方法论</b>，所以笔者暂时不会讨论特别困难的题目，希望可以从简单的题目，体会到算法的魅力，进而引发各位读者钻研算法的心。</p>
+  </div>
+</details>
+
+<!-- 内联样式 -->
+<style>
+  .details {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    margin: 1.5em 0;
+    background: #f6f8fa;
+    overflow: hidden;
+  }
+
+  .details summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+
+  .details summary:hover {
+    background-color: #eaedf1;
+  }
+
+  .details[open] summary {
+    border-bottom: 1px solid #e1e4e8;
+    background: #ffffff;
+  }
+
+  .details-content {
+    padding: 16px;
+    background: white;
+  }
+
+  .details-content>*:first-child {
+    margin-top: 0;
+  }
+
+  .details-content>*:last-child {
+    margin-bottom: 0;
+  }
+</style>
