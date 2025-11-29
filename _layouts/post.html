@@ -1,9 +1,57 @@
 ---
-layout: default
+layout: base
 ---
-<h1>{{ page.title }}</h1>
-<p class="meta">{{ page.date | date_to_string }}</p>
+<!-- 文章的模板 -->
+<!-- <h1>{{ page.title }}</h1> -->
+<!-- <p class="meta">{{ page.date | date_to_string }}</p> -->
 
 <div class="post">
   {{ content }}
 </div>
+
+<!-- 添加上一篇和下一篇导航 -->
+<div class="post-navigation">
+  <ul class="post-ul">
+    <li>
+      <div class="prev-post">
+        {% if page.previous %}
+        <span>上一篇：</span>
+        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}">{{ page.previous.title }}</a>
+        {% else %}
+        <span>上一篇：无</span>
+        {% endif %}
+      </div>
+    </li>
+    <li>
+      <div class="next-post">
+        {% if page.next %}
+        <span>下一篇：</span>
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}">{{ page.next.title }}</a>
+        {% else %}
+        <span>下一篇：无</span>
+        {% endif %}
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- 内联样式 -->
+<style>
+  div.post-navigation {
+    /* 用于使ul列表撑满div的区域 */
+    display: grid;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  ul.post-ul {
+    /* 取消列表开头的小圆点 */
+    list-style: none;
+    /* 横向列表 */
+    display: flex;
+    padding: 0%;
+    margin: 0%;
+    /* 两端对齐，制作左右分别对齐的效果 */
+    justify-content: space-between;
+  }
+</style>

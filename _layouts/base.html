@@ -1,0 +1,39 @@
+<!-- 基础模板 -->
+<!-- 这个网站的大部分页面的模板都是基于这个网页来的-->
+<!-- 除了index页面，这个网页不应该作为网页的模板 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{ page.title }}</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<!-- 引用 -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/blockquote.css">
+	<!-- 图标库 https://fontawesome.com/v4/icons/ 查看有哪些图标 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	{% include head.html %}
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li><i class="fa fa-home" style="color: #999;" aria-hidden="true"></i><a href="/"></i>Home</a></li>
+			<li><i class="fa fa-info-circle" style="color: #999;" aria-hidden="true"></i><a href="/about">About</a></li>
+			<li><i class="fa fa-link" style="color: #999;" aria-hidden="true"></i><a href="/link">Link</a></li>
+			<li><i class="fa fa-folder" style="color: #999;" aria-hidden="true"></i><a href="/blog">Blog</a></li>
+			<!-- <li><i class="fa fa-adjust" style="color: #999;" aria-hidden="true"></i></li> -->
+		</ul>
+	</nav>
+	<div class="container">
+		{{ content }}
+	</div><!-- /.container -->
+	<footer>
+		<ul>
+			<li><a href="mailto:tai@foxmail.com">Email</a></li>
+			<li><a href="https://github.com/dsghbc">GitHub</a></li>
+		</ul>
+	</footer>
+</body>
+
+</html>
