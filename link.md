@@ -16,6 +16,10 @@ title: "Link All The World!"
 
 [Learning Cpp](https://www.studycpp.cn/)
 
+[Learning x in y minutes](https://learnxinyminutes.com/)
+
+[c to cpp](https://isocpp.org/wiki/faq/c)
+
 {% endcapture %}
 
 {% include details.html summary="点击查看详情" content=CPPLearning %}
@@ -41,6 +45,39 @@ title: "Link All The World!"
 {% endcapture %}
 
 {% include details.html summary="点击查看详情" content=MC %}
+
+## 数据结构与算法
+
+{% capture algo %}
+
+[Hello算法](https://www.hello-algo.com/)
+
+[LeetCode算法通关手册](https://algo.itcharge.cn/)
+
+{% endcapture %}
+
+{% include details.html summary="点击查看详情" content=algo %}
+
+# 项目复刻
+
+{% capture project %}
+
+[Build Your Own X](https://github.com/DSGHBC/build-your-own-x)
+
+[Project Based Learning](https://github.com/DSGHBC/project-based-learning)
+
+**正在复刻的项目**
+
+[Kilo - Your Own Text Editor](https://viewsourcecode.org/snaptoken/kilo/)
+
+**等待复刻的项目**
+
+[Build Your Own Lisp](https://www.abnerchou.me/BuildYourOwnLispCn/)
+
+{% endcapture %}
+
+{% include details.html summary="点击查看详情" content=project %}
+
 <!-- ## 联系我 -->
 
 <!-- tai0@foxmail.com -->
