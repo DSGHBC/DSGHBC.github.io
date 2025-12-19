@@ -8,6 +8,12 @@ title: "Link All The World!"
 
 <!-- [CTF Wiki](https://ctf-wiki.org/) -->
 
+<!-- [CS 自学指南](https://csdiy.wiki) -->
+
+[聪明的提问方式](https://docs.mai-mai.org/manual/other/smart-question-guide)
+
+[Just Vim it](https://vim.nauxscript.com/)
+
 ## Cpp 学习相关
 
 {% capture CPPLearning %}
@@ -19,6 +25,10 @@ title: "Link All The World!"
 [Learning x in y minutes](https://learnxinyminutes.com/)
 
 [c to cpp](https://isocpp.org/wiki/faq/c)
+
+[mcpp standard](https://github.com/Sunrisepeak/mcpp-standard)
+
+[Modern Cpp Programming](https://github.com/federico-busato/Modern-CPP-Programming)
 
 {% endcapture %}
 
@@ -77,6 +87,8 @@ title: "Link All The World!"
 {% endcapture %}
 
 {% include details.html summary="点击查看详情" content=project %}
+
+[Emacs Book](https://pavinberg.github.io/emacs-book/zh/intro/)
 
 <!-- ## 联系我 -->
 
