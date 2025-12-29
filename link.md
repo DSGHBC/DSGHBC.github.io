@@ -6,9 +6,13 @@ title: "Link All The World!"
 
 <!-- [OI Wiki](https://oi-wiki.org/) -->
 
+<!-- [C++ 算法竞赛常用 IO 技巧笔记](https://www.cnblogs.com/Eigh18n/p/18958722) -->
+
 <!-- [CTF Wiki](https://ctf-wiki.org/) -->
 
 <!-- [CS 自学指南](https://csdiy.wiki) -->
+
+<!-- [CS 自学指南](https://csguide.cn/) -->
 
 [聪明的提问方式](https://docs.mai-mai.org/manual/other/smart-question-guide)
 
@@ -27,6 +31,18 @@ title: "Link All The World!"
 [c to cpp](https://isocpp.org/wiki/faq/c)
 
 [mcpp standard](https://github.com/Sunrisepeak/mcpp-standard)
+
+[现代Cpp教程](https://changkun.de/modern-cpp/zh-cn/01-intro/)
+
+[ModernCpp](https://modern-cpp.readthedocs.io/zh-cn/latest/index.html)
+
+[Cpp 20 完全指南](https://cppguide.cn/pages/cpp20completeguides/#关于本书)
+
+[Learn Modern C++](https://learnmoderncpp.com/)
+
+[谷雨同学的C++教程](https://learn-cpp.guyutongxue.site/preface.html)
+
+[LCPU 知识库](https://wiki.lcpu.dev/zh/hpc/from-scratch/learn-modern-cpp)
 
 [Modern Cpp Programming](https://github.com/federico-busato/Modern-CPP-Programming)
 
@@ -78,11 +94,15 @@ title: "Link All The World!"
 
 **正在复刻的项目**
 
-[Kilo - Your Own Text Editor](https://viewsourcecode.org/snaptoken/kilo/)
+[Build Your Own Lisp](https://www.abnerchou.me/BuildYourOwnLispCn/)
 
 **等待复刻的项目**
 
-[Build Your Own Lisp](https://www.abnerchou.me/BuildYourOwnLispCn/)
+[无]
+
+**复刻完毕的项目**
+
+[Kilo - Your Own Text Editor](https://viewsourcecode.org/snaptoken/kilo/)
 
 {% endcapture %}
 
