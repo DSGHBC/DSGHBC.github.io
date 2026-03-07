@@ -1,57 +1,81 @@
----
-layout: base
----
-<!-- 文章的模板 -->
-<!-- <h1>{{ page.title }}</h1> -->
-<!-- <p class="meta">{{ page.date | date_to_string }}</p> -->
+<!DOCTYPE html>
+<html lang="zh-cn">
 
-<div class="post">
-  {{ content }}
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/layouts/page.css">
+    <script src="/assets/js/layouts/post.js"></script>
 
-<!-- 添加上一篇和下一篇导航 -->
-<div class="post-navigation">
-  <ul class="post-ul">
-    <li>
-      <div class="prev-post">
-        {% if page.previous %}
-        <span>上一篇：</span>
-        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}">{{ page.previous.title }}</a>
-        {% else %}
-        <span>上一篇：无</span>
-        {% endif %}
-      </div>
-    </li>
-    <li>
-      <div class="next-post">
-        {% if page.next %}
-        <span>下一篇：</span>
-        <a href="{{ page.next.url }}" title="{{ page.next.title }}">{{ page.next.title }}</a>
-        {% else %}
-        <span>下一篇：无</span>
-        {% endif %}
-      </div>
-    </li>
-  </ul>
-</div>
-<!-- 内联样式 -->
-<style>
-  div.post-navigation {
-    /* 用于使ul列表撑满div的区域 */
-    display: grid;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
+    <!-- 引用 -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/blockquote.css">
+    <!-- 图标库 https://fontawesome.com/v4/icons/ 查看有哪些图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% include head.html %}
+    <title>{{ page.title }}</title>
+</head>
 
-  ul.post-ul {
-    /* 取消列表开头的小圆点 */
-    list-style: none;
-    /* 横向列表 */
-    display: flex;
-    padding: 0%;
-    margin: 0%;
-    /* 两端对齐，制作左右分别对齐的效果 */
-    justify-content: space-between;
-  }
-</style>
+<body>
+    <div class="mobile-buttons">
+        <button class="mobile-left">文章</button>
+        <button class="mobile-right">目录</button>
+    </div>
+    <div class="blog-container">
+        <aside class="left-sidebar" id="leftSide">
+            <!-- <button class="fold-btn" onclick="foldLeft()">收起</button> -->
+            <div class="sidebar-header">
+                <h3> 文章
+                    <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+                </h3>
+            </div>
+            <ul class="blog-list">
+                {% for post in site.posts %}
+
+                {% if post.title == page.title %}
+
+                <a href="{{ post.url }}" title="{{ post.title }}" class="post-title">
+                    <li class="post-title" style="background: #f9f8fa;color:#409eff;">
+                        {{ post.title }}
+                    </li>
+                </a>
+                {% else %}
+                <a href="{{ post.url }}" title="{{ post.title }}" class="post-title">
+                    <li class="post-title">
+                        {{ post.title }}
+                    </li>
+                </a>
+                {% endif%}
+                {% endfor %}
+            </ul>
+        </aside>
+        <button class="left-btn" id="leftBtn" onclick="foldLeft()">
+            <span style="writing-mode: vertical-lr;text-orientation: upright;" id="leftBtnText">
+                隐藏
+            </span>
+        </button>
+        <main class="main-content">
+            <div class="post-header">
+                <h1 style="text-align: center;margin-bottom: 1%;">
+                    {{page.title}}
+                </h1>
+                <p class="post-date">
+                    <!-- 格式：2026年03月07日 -->
+                    {{ page.date | date: "%Y年%m月%d日" }}
+                </p>
+                <hr class="post-hr">
+            </div>
+            <div class="post" id="content">
+                {{ content }}
+            </div>
+        </main>
+        <aside class="right-toc" id="rightToc">
+            <!-- <button class="toc-toggle" onclick="foldRight()"> - </button> -->
+            <div class="toc-content">
+                <h3 id="tocTitle">{{ page.title }}</h4>
+                    <ul id="tocList"> </ul>
+            </div>
+        </aside>
+    </div>
+</body>
+
+</html>

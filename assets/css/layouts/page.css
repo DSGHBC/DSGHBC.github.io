@@ -1,0 +1,269 @@
+:root {
+    --primary: #4a6cf7;
+    --bg: #f8f9fa;
+    --card: #fff;
+    --radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --active: #409eff;
+}
+
+/* CSS重置 */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+body {
+    background: var(--bg);
+    font-family: system-ui, sans-serif;
+}
+
+.blog-container {
+    /* display: grid; */
+    /* grid-template-columns: 240px 1fr 200px; */
+    /* gap: 20px; */
+    /* padding: 20px; */
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.left-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* bottom: 100%; */
+    height: 100%;
+    width: 240px;
+    box-shadow: var(--shadow);
+
+
+    background: white;
+    /* border-radius: 12px; */
+    padding: 20px;
+    transition: 0.3s ease;
+    overflow: hidden;
+}
+
+.left-sidebar.folded {
+    /* width: 0;
+    padding: 0;
+    opacity: 0; */
+    transform: translateX(-100%);
+}
+
+/* .left-sidebar .sidebar-content {
+    position: absolute;
+} */
+
+
+.left-sidebar .sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.left-sidebar .post-title {
+    text-decoration: none;
+    color: gray;
+}
+
+.left-btn {
+    position: fixed;
+    background-color: white;
+    box-shadow: var(--shadow) var(--shadow) var(--shadow) 0;
+
+    top: 20px;
+    left: 240px;
+
+    height: 50px;
+    width: 40px;
+
+    border: 0% 30% 0% 30%;
+    border: none;
+    transition: 0.3s;
+
+}
+
+.left-btn.folded {
+    left: 0;
+    /* width: 0; */
+}
+
+ul.blog-list {
+    padding-inline-start: 0px;
+}
+
+li.post-title {
+    list-style: none;
+    /* border: #409eff; */
+    padding: 10px 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+li.post-title:hover {
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.main-content {
+    width: 60%;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin-top: 20px;
+    line-height: 1.7;
+}
+
+.main-content h1,
+h2 {
+    margin-bottom: 1em;
+}
+
+.post-header h1 {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.post-header .post-date {
+    text-align: right;
+}
+
+.post-header .post-hr {
+    /* color: gray; */
+    color: var(--active);
+    /* border: 3px; */
+    /* border-style: dashed; */
+}
+
+.right-toc {
+    position: fixed;
+    width: 240px;
+    right: 5px;
+    z-index: 999;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin-top: 20px;
+    /* transition: all 0.3s ease; */
+    transform: translateX(0);
+}
+
+.right-toc.folded {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+
+.right-toc.folded .toc-content {
+    /* display: none; */
+    transform: translateX(200%);
+}
+
+.toc-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-right: 50%;
+    background: var(--primary);
+    color: #7c7c7c;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.toc-content {
+    display: block;
+}
+
+.toc-content ul {
+    padding-inline-start: 10px;
+}
+
+.toc-content li {
+    padding-inline-start: 0px;
+    list-style: none;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.toc-content li.active {
+    color: var(--active);
+    font-weight: bold;
+    border-left: 2px solid var(--active);
+    padding-left: 8px;
+}
+
+
+@media (max-width: 768px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+
+    .left-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100vh;
+        z-index: 99;
+        transform: translateX(-100%);
+    }
+
+    .left-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .right-toc {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        z-index: 99;
+        transform: translateX(100%);
+    }
+
+    .right-toc.show {
+        transform: translateX(0);
+    }
+}
+
+.mobile-buttons {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background: white;
+}
+
+.mobile-buttons button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: #409eff;
+    color: white;
+}
+
+@media (min-width:769px) {
+    .mobile-buttons {
+        display: none;
+    }
+}
