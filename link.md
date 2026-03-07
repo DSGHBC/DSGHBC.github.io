@@ -60,6 +60,9 @@ title: "Link All The World!"
 [Nginx](https://nginx.mosong.cc/guide/)
 Nginx中文手册
 
+[Liquid](https://jekylldo.cn/liquid/basics/introduction/)
+Liquid语言手册
+
 {% endcapture %}
 
 {% include details.html summary="点击查看详情" content=WebLearning %}

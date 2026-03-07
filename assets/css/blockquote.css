@@ -19,7 +19,7 @@ blockquote {
     border-radius: 0 var(--radius) var(--radius) 0;
     color: #555;
     font-style: normal;
-    position: relative;
+    /* position: relative; */
 }
 
 /* 给嵌套引用增加层次感 */
