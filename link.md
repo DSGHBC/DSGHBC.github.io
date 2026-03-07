@@ -57,6 +57,9 @@ title: "Link All The World!"
 [Jekyll](https://jekylldo.cn/)
 官方手册，用于学习jekyll和Liquid技术来部署和这个网站。
 
+[Nginx](https://nginx.mosong.cc/guide/)
+Nginx中文手册
+
 {% endcapture %}
 
 {% include details.html summary="点击查看详情" content=WebLearning %}
