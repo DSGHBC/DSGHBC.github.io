@@ -2,57 +2,19 @@
 layout: page 
 title: "Link All The World!" 
 ---
-# 网站收集
+## 构建这个网站
 
-<!-- [OI Wiki](https://oi-wiki.org/) -->
+这个页面将会用于讲授如何构建这个网站，我会汇集我在构建这个网站过程中用到的知识以及笔记，制作成为一个完整的地图。如果你完整的阅读了这篇文章，应该可以做到完整的复刻这个网站。我会以搭积木的方式介绍这个网站是如何实现的，在显示基本的网站之后，我会在着手介绍`HTML`和`CSS`和`Javascript`的知识。
 
-<!-- [C++ 算法竞赛常用 IO 技巧笔记](https://www.cnblogs.com/Eigh18n/p/18958722) -->
+不用担心，我们学习以上的三者，只是为了这个网站服务，所以我们只会学习实用的一部分，而不会花费时间在枯燥的理论上(尽管这些理论也是十分必须的)。我会简单的概括的讲述DOM，盒结构等等知识。
 
-<!-- [CTF Wiki](https://ctf-wiki.org/) -->
+> 我计划做一期视频来解释`HTML`和`CSS`和`Javascript`之间的关联，因为在我写下文字的时候，动画自然而然的浮现在了我的脑海中，所以我真的很想把它做出来。
+>
+> 不过，什么时候去做，是一个问题，我可能会花费时间去学习`Processing`语言去制作这个视频，也可能简单的使用AE来制作动画，谁知道呢?
 
-<!-- [CS 自学指南](https://csdiy.wiki) -->
+现在，先收集一些官方的网页吧，我在构建这个网页的过程中，大量的阅读了这个部分的文档。如果你要复刻这个项目，那么这些网页想必也会帮助到你。
 
-<!-- [CS 自学指南](https://csguide.cn/) -->
-
-[聪明的提问方式](https://docs.mai-mai.org/manual/other/smart-question-guide)
-
-[Just Vim it](https://vim.nauxscript.com/)
-
-## Cpp 学习相关
-
-{% capture CPPLearning %}
-
-[CppReference](https://cppreference.cn/w/cpp/language)
-
-[Learning Cpp](https://www.studycpp.cn/)
-
-[Learning x in y minutes](https://learnxinyminutes.com/)
-
-[c to cpp](https://isocpp.org/wiki/faq/c)
-
-[mcpp standard](https://github.com/Sunrisepeak/mcpp-standard)
-
-[现代Cpp教程](https://changkun.de/modern-cpp/zh-cn/01-intro/)
-
-[ModernCpp](https://modern-cpp.readthedocs.io/zh-cn/latest/index.html)
-
-[Cpp 20 完全指南](https://cppguide.cn/pages/cpp20completeguides/#关于本书)
-
-[Learn Modern C++](https://learnmoderncpp.com/)
-
-[谷雨同学的C++教程](https://learn-cpp.guyutongxue.site/preface.html)
-
-[LCPU 知识库](https://wiki.lcpu.dev/zh/hpc/from-scratch/learn-modern-cpp)
-
-[Modern Cpp Programming](https://github.com/federico-busato/Modern-CPP-Programming)
-
-{% endcapture %}
-
-{% include details.html summary="点击查看详情" content=CPPLearning %}
-
-## Web 学习相关
-
-{% capture WebLearning %}
+{% capture build %}
 
 [Jekyll](https://jekylldo.cn/)
 官方手册，用于学习jekyll和Liquid技术来部署和这个网站。
@@ -65,57 +27,29 @@ Liquid语言手册
 
 {% endcapture %}
 
-{% include details.html summary="点击查看详情" content=WebLearning %}
+{% include details.html summary="展开查看列表" content=build %}
 
-## MC
+{% capture todo %}
 
-{% capture MC %}
+**理论**
 
-[香草图书馆](https://vanillalibrary.mcfpp.top/datapack-index/)
-学习MC数据包的一个公益网站。
+- [ ] HTML，CSS和Javascript是如何连接起来的?
+- [ ] CSS的盒结构 - 正常盒与怪异盒
+- [ ] CSS的布局 - Flex与Grid
+- [ ] CSS的动画 - 过渡和动画
 
-{% endcapture %}
+**网站实战**
 
-{% include details.html summary="点击查看详情" content=MC %}
+- [ ] post中的三栏式页面是如何实现的?
+- [ ] 如何动态读取目录?
+- [ ] 如何隐藏某一栏?
+- [ ] 如何配置主题?
 
-## 数据结构与算法
+**部署**
 
-{% capture algo %}
-
-[Hello算法](https://www.hello-algo.com/)
-
-[LeetCode算法通关手册](https://algo.itcharge.cn/)
-
-{% endcapture %}
-
-{% include details.html summary="点击查看详情" content=algo %}
-
-# 项目复刻
-
-{% capture project %}
-
-[Build Your Own X](https://github.com/DSGHBC/build-your-own-x)
-
-[Project Based Learning](https://github.com/DSGHBC/project-based-learning)
-
-**正在复刻的项目**
-
-[Build Your Own Lisp](https://www.abnerchou.me/BuildYourOwnLispCn/)
-
-**等待复刻的项目**
-
-[无]
-
-**复刻完毕的项目**
-
-[Kilo - Your Own Text Editor](https://viewsourcecode.org/snaptoken/kilo/)
+- [ ] GitHubPages 实现一个简单的网页
+- [ ] 加入Jekyll技术 - 利用 markdown 文本
 
 {% endcapture %}
 
-{% include details.html summary="点击查看详情" content=project %}
-
-[Emacs Book](https://pavinberg.github.io/emacs-book/zh/intro/)
-
-<!-- ## 联系我 -->
-
-<!-- tai0@foxmail.com -->
+{% include details.html summary="TODO列表" content=todo %}
