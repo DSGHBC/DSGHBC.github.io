@@ -29,7 +29,7 @@ function buildToc() {
     //     tocTitle.textContent = title.textContent;
     // }
 
-    const headings = content.querySelectorAll('h2,h3');
+    const headings = content.querySelectorAll('h1,h2,h3');
 
     if (!headings.length) {
         root.style.display = 'none';
@@ -40,7 +40,21 @@ function buildToc() {
         heading.id = 'heading-' + index;
         const li = document.createElement('li');
         li.textContent = heading.textContent;
-        li.style.marginLeft = heading.tagName === 'H3' ? '12px' : '0';
+        // li.style.marginLeft = heading.tagName === 'H3' ? '24px' : '0';
+        // li.style.marginLeft = heading.tagName === 'H2' ? '12px' : '0';
+
+        switch (heading.tagName) {
+            case "H3":
+                li.style.marginLeft = '24px';
+                break;
+            case "H2":
+                li.style.marginLeft = '12px';
+                break;
+            default:
+                li.style.marginLeft = '0px';
+                break;
+        }
+
         li.addEventListener('click', () => {
             heading.scrollIntoView({ behavior: 'smooth' });
         });

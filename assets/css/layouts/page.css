@@ -257,4 +257,9 @@ h2 {
     }
 }
 
-@media (min-width:769px) {}
+/* @media (min-width:769px) {} */
+
+a {
+    text-decoration: none;
+    color: #7c7c7c;
+}

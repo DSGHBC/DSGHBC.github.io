@@ -47,8 +47,8 @@ Liquid语言手册
 
 **部署**
 
-- [ ] GitHubPages 实现一个简单的网页
-- [ ] 加入Jekyll技术 - 利用 markdown 文本
+- [x] [GitHubPages 实现一个简单的网页]({% post_url 2025-11-15-使用 GitHub 搭建个人网站 %})
+- [x] [加入Jekyll技术 - 利用 markdown 文本]({% post_url 2025-11-15-加入Jekyll技术 - 利用 markdown 文本 %})
 
 {% endcapture %}
 
