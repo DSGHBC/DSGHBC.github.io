@@ -136,7 +136,7 @@ ul.blog li:last-child {
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .blog-container {
         margin: 30px 0;
     }
@@ -151,5 +151,12 @@ ul.blog li:last-child {
 
     .post-date {
         font-size: 0.8em;
+    }
+} */
+
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        margin: 20px;
     }
 }
