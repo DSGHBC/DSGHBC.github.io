@@ -1,15 +1,20 @@
 function foldLeft() {
     document.getElementById('leftSide').classList.toggle('folded');
     document.getElementById('leftBtn').classList.toggle('folded');
-    const text = document.getElementById('leftBtnText');
+    // const text = document.getElementById('leftBtnText');
+    const icon = document.getElementById('leftBtnIcon');
 
     if (
         document.getElementById('leftSide').classList.contains('folded') ||
         document.getElementById('leftBtn').classList.contains('folded')
     ) {
-        text.textContent = '目录';
+        // text.textContent = '目录';
+        icon.classList.add("fa-bars");
+        icon.classList.remove("fa-chevron-left");
     } else {
-        text.textContent = '隐藏';
+        // text.textContent = '隐藏';
+        icon.classList.add("fa-chevron-left");
+        icon.classList.remove("fa-bars");
     }
 }
 function foldRight() {

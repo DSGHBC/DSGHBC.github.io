@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *::after,
+        *::before {
+            box-sizing: inherit;
+            margin: 0;
+        }
+
+        :root {
+            --main-color: #4a4a4a;
+            --main-size: 100px;
+            --btn-color: #fff;
+            --btn-size: 80px;
+            --shadow: 0px 0px 5px 1px black
+        }
+
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: var(--main-size);
+            height: var(--main-size);
+            background: var(--main-color);
+            border-radius: 50%;
+
+        }
+
+        .btn i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: var(--btn-size);
+            height: var(--btn-size);
+            background: var(--btn-color);
+            border-radius: 50%;
+            border: none;
+            /* border-color: black; */
+            /* border-style: solid; */
+            /* box-shadow: inset var(--shadow); */
+        }
+
+        .btn i::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+
+            /* color: cadetblue; */
+            border: none;
+            font-size: 40px;
+            transition: 0.3s;
+        }
+
+        .btn.active i::before {
+            transform: translate(-50%, -50%);
+        }
+
+        .box {
+            position: absolute;
+            /* right: -30%; */
+            /* top: 50%; */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .box i {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            /* background: gray; */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+
+            font-size: 40px;
+        }
+
+        .box.open i:hover {
+            transition: 0.1s;
+            font-size: 50px;
+        }
+
+        .box.open {
+            opacity: 1;
+        }
+
+        .box.open i:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg) translateX(100px) rotate(0deg);
+            transition-delay: 0s;
+        }
+
+        .box.open i:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(-60deg) translateX(100px) rotate(60deg);
+            transition-delay: 0.1s;
+        }
+
+        .box.open i:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(-120deg) translateX(100px) rotate(120deg);
+            transition-delay: 0.2s;
+        }
+
+        .box.open i:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(-180deg) translateX(100px) rotate(180deg);
+            transition-delay: 0.3s;
+        }
+
+        .box.open i:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(-240deg) translateX(100px) rotate(240deg);
+            transition-delay: 0.4s;
+        }
+
+        .box.open i:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(-300deg) translateX(100px) rotate(300deg);
+            transition-delay: 0.5s;
+        }
+
+        .box i {
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="btn">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div class="box">
+            <i class="fa fa-amazon" aria-hidden="true"></i>
+            <i class="fa fa-android" aria-hidden="true"></i>
+            <i class="fa fa-chrome" aria-hidden="true"></i>
+            <i class="fa fa-github" aria-hidden="true"></i>
+            <i class="fa fa-edge" aria-hidden="true"></i>
+            <i class="fa fa-linux" aria-hidden="true"></i>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    const btn = document.querySelector('.btn');
+    const box = document.querySelector('.box');
+
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        box.classList.toggle('open');
+    });
+</script>
+
+</html>

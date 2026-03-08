@@ -25,6 +25,9 @@ Nginx中文手册
 [Liquid](https://jekylldo.cn/liquid/basics/introduction/)
 Liquid语言手册
 
+[FontAwesome](https://fontawesome.com/v4/icons/)
+好用的Icon库。
+
 {% endcapture %}
 
 {% include details.html summary="展开查看列表" content=build %}
@@ -33,10 +36,10 @@ Liquid语言手册
 
 **理论**
 
-- [ ] HTML，CSS和Javascript是如何连接起来的?
-- [ ] CSS的盒结构 - 正常盒与怪异盒
-- [ ] CSS的布局 - Flex与Grid
-- [ ] CSS的动画 - 过渡和动画
+- [ ] HTML，CSS和Javascript是如何连接起来的? [笔记已完成，未整理]
+- [ ] CSS的盒结构 - 正常盒与怪异盒 [已完成，未整理]
+- [ ] CSS的布局 - Flex与Grid [Flex完成，Grid大纲完成]
+- [ ] CSS的动画 - 过渡和动画 [等待]
 
 **网站实战**
 
@@ -49,6 +52,9 @@ Liquid语言手册
 
 - [x] [GitHubPages 实现一个简单的网页]({% post_url 2025-11-15-使用 GitHub 搭建个人网站 %})
 - [x] [加入Jekyll技术 - 利用 markdown 文本]({% post_url 2025-11-15-加入Jekyll技术 - 利用 markdown 文本 %})
+- [ ] jekyll 支持第三方样式(引用 代码 数学公式 思维导图)
+
+> 这部分的文章其实早就写好了，但是一直没有上传，所以并不算是最近写好的文章。
 
 {% endcapture %}
 
