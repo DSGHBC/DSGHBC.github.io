@@ -36,3 +36,21 @@ blockquote p:first-child {
 blockquote p:last-child {
     margin-bottom: 0;
 }
+
+/* Obsidian Callout 块样式 */
+.callout {
+    border-left: 4px solid;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin: 1.2em 0;
+    font-style: normal;
+}
+
+.callout > *:first-child { margin-top: 0; }
+.callout > *:last-child  { margin-bottom: 0; }
+
+.callout-note    { border-color: #0969da; background: #ddf4ff; }
+.callout-info    { border-color: #8250df; background: #fbefff; }
+.callout-tip     { border-color: #1a7f37; background: #dafbe1; }
+.callout-warning { border-color: #9a6700; background: #fff8c5; }
+.callout-danger  { border-color: #cf222e; background: #ffebe9; }
