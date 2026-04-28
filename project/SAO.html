@@ -86,19 +86,27 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            /* background: gray; */
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
             left: 0;
             top: 0;
-            transform: translate(-50%, -50%);
+
+            /* transform: translate(-50%, -50%); */
+            /* transition: 0.3s; */
+
+            transform: translate(-50%, -50%) rotate(0deg) translateX(0px) rotate(0deg);
+            opacity: 0;
+            transition: all 0.3s ease;
 
             font-size: 40px;
         }
 
+        .box.open i {
+            opacity: 1;
+        }
+
         .box.open i:hover {
-            transition: 0.1s;
             font-size: 50px;
         }
 
@@ -136,8 +144,24 @@
             transition-delay: 0.5s;
         }
 
-        .box i {
-            transition: 0.3s;
+        .box i:nth-child(1) {
+            transition-delay: 0.4s;
+        }
+
+        .box i:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .box i:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .box i:nth-child(4) {
+            transition-delay: 0.1s;
+        }
+
+        .box i:nth-child(5) {
+            transition-delay: 0s;
         }
     </style>
 </head>

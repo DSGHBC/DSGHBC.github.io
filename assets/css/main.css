@@ -2,6 +2,17 @@
 整个网站的样式的配置
 */
 
+/* html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+} */
+
 body {
     margin: 60px auto;
     width: 70%;
