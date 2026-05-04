@@ -4,4 +4,6 @@ _site/
 .deleted/
 test/
 scripts/
+.ruby-lsp/
+_plugins/
 .claude/

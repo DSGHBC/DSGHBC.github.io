@@ -153,13 +153,13 @@
 
 /* 错误 */      .highlight .err
                     { color: var(--red);
-                      background: rgba(191, 97, 106, 0.1);
+                      background: var(--tk-error-bg);
                       border-radius: 2px; padding: 0 2px; }
 
 /* Diff */      .highlight .gi
-                    { background: rgba(163, 190, 140, 0.2); color: var(--green); }
+                    { background: var(--tk-diff-add-bg); color: var(--green); }
                 .highlight .gd
-                    { background: rgba(191, 97, 106, 0.12); color: var(--red); }
+                    { background: var(--tk-diff-del-bg); color: var(--red); }
 
 /* ── 行内代码 ──────────────────────────────────── */
 :not(.highlight) > code {

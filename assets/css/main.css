@@ -48,6 +48,10 @@
     --tk-preproc:      #7C3AED;
     --tk-operator:     #475569;
     --tk-constant:     #D97706;
+    /* 代码 Diff / 错误 */
+    --tk-error-bg:     rgba(239,68,68,0.1);
+    --tk-diff-add-bg:  rgba(16,185,129,0.15);
+    --tk-diff-del-bg:  rgba(239,68,68,0.08);
 }
 
 /* ── 夜间：Tokyo Night 东京之夜 ───────────────── */
@@ -86,6 +90,10 @@
     --tk-preproc:      #bb9af7;
     --tk-operator:     #89ddff;
     --tk-constant:     #e0af68;
+    /* 代码 Diff / 错误 */
+    --tk-error-bg:     rgba(247,118,142,0.1);
+    --tk-diff-add-bg:  rgba(158,206,106,0.15);
+    --tk-diff-del-bg:  rgba(247,118,142,0.08);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -306,7 +314,7 @@ input[type="checkbox"]:checked::after {
     position: absolute;
     left: 3px; top: 1px;
     width: 4px; height: 7px;
-    border: solid #fff;
+    border: solid var(--surface);
     border-width: 0 1.5px 1.5px 0;
     transform: rotate(45deg);
 }
@@ -349,6 +357,93 @@ blockquote {
     border-radius: 0 4px 4px 0;
 }
 
+/* ── 表格 ─────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.92rem;
+}
+
+thead {
+    border-bottom: 2px solid var(--border);
+}
+
+th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text);
+}
+
+tr:last-child td { border-bottom: none; }
+
+tbody tr:hover { background: var(--accent-subtle); }
+
+/* ── 键盘按键 ────────────────────────────────── */
+kbd {
+    display: inline-block;
+    padding: 0.15em 0.45em;
+    font-size: 0.8em;
+    font-family: var(--font-mono);
+    color: var(--text);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 var(--border);
+    line-height: 1.4;
+}
+
+/* ── 高亮标记 ────────────────────────────────── */
+mark {
+    background: var(--accent-subtle);
+    color: inherit;
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+}
+
+/* ── 删除线 ──────────────────────────────────── */
+del {
+    color: var(--text-secondary);
+    text-decoration-color: var(--red);
+}
+
+/* ── 上标 / 脚注 ─────────────────────────────── */
+sup {
+    font-size: 0.75em;
+    line-height: 0;
+}
+
+sup > a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ── 脚注区块（kramdown 生成） ───────────────── */
+.footnotes {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.footnotes ol { padding-left: 1.2em; }
+
+.footnotes li:target {
+    background: var(--accent-subtle);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+/* ── 引用块末行 ──────────────────────────────── */
 blockquote > :last-child { margin-bottom: 0; }
 
 blockquote ul > li::before,
