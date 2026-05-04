@@ -1,173 +1,314 @@
-/* 
-整个网站的样式的配置
-*/
+/* ================================================================
+   DSGH Blog — 主题色彩配置
+   所有颜色集中在此，日间/夜间两套，修改即全局生效
+   ================================================================ */
 
-/* html {
-    box-sizing: border-box;
+/* ── 日间：Nord 极北 ──────────────────────────── */
+:root, [data-theme="light"] {
+    /* 页面底色 */
+    --bg:              #ECEFF4;
+    --surface:         #FFFFFF;
+    /* 文字 */
+    --text:            #2E3440;
+    --text-secondary:  #81A1C1;
+    /* 强调 */
+    --accent:          #5E81AC;
+    --accent-hover:    #88C0D0;
+    --accent-subtle:   rgba(94,129,172,0.08);
+    /* 边框 */
+    --border:          #D8DEE9;
+    --border-light:    #E5E9F0;
+    /* 代码 */
+    --code-bg:         #DDE1E8;
+    --inline-code:     #5E81AC;
+    /* 引用块 */
+    --quote-bg:        #DFE3EA;
+    --quote-border:    #C8CDD4;
+    /* 导航栏 */
+    --nav-bg:          #FFFFFF;
+    --nav-text:        #4C566A;
+    --nav-active:      #5E81AC;
+    --nav-shadow:      0 1px 0 var(--border);
+    /* 阴影 */
+    --shadow:          0 1px 3px rgba(0,0,0,0.06);
+    /* 特殊色 */
+    --red:             #BF616A;
+    --green:           #A3BE8C;
+    --yellow:          #EBCB8B;
+    --purple:          #B48EAD;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-    margin: 0;
-} */
+/* ── 夜间：Tokyo Night 东京之夜 ───────────────── */
+[data-theme="dark"] {
+    --bg:              #1a1b26;
+    --surface:         #24283b;
+    --text:            #c0caf5;
+    --text-secondary:  #565f89;
+    --accent:          #7aa2f7;
+    --accent-hover:    #89ddff;
+    --accent-subtle:   rgba(122,162,247,0.1);
+    --border:          #292e42;
+    --border-light:    #1e2030;
+    --code-bg:         #1e2030;
+    --inline-code:     #89ddff;
+    --quote-bg:        #1e2030;
+    --quote-border:    #292e42;
+    --nav-bg:          #16161e;
+    --nav-text:        #a9b1d6;
+    --nav-active:      #7aa2f7;
+    --nav-shadow:      0 1px 0 #1b1b2f;
+    --shadow:          0 1px 3px rgba(0,0,0,0.3);
+    --red:             #f7768e;
+    --green:           #9ece6a;
+    --yellow:          #e0af68;
+    --purple:          #bb9af7;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   以下为样式代码，通常无需修改
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { -webkit-font-smoothing: antialiased; }
 
 body {
-    margin: 60px auto;
-    width: 70%;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+                 "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+    width: 100%;
+    transition: background 0.3s, color 0.3s;
 }
 
-nav ul,
-footer ul {
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-    padding: 0px;
-    list-style: none;
-    font-weight: bold;
+/* ── 导航栏 ───────────────────────────────────── */
+.site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    z-index: 1000;
+    background: var(--nav-bg);
+    box-shadow: var(--nav-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    transition: background 0.3s;
 }
 
-nav ul li,
-footer ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-a {
+.nav-brand {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
     text-decoration: none;
-    color: #999;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-h1 {
-    font-size: 3em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-h2 {
-    font-size: 2.4em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-h3 {
-    font-size: 1.92em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-h4 {
-    font-size: 1.54em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-h5 {
-    font-size: 1.23em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-h6 {
-    font-size: 0.98em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-p {
-    /* font-size: 1.5em; */
-    font-size: 1.3em;
-    line-height: 1.4em;
-    color: #333;
-}
-
-footer {
-    border-top: 1px solid #d5d5d5;
-    font-size: .8em;
-}
-
-ul.posts {
-    margin: 20px auto 40px;
-    font-size: 1.5em;
-}
-
-ul.posts li {
-    list-style: none;
-}
-
-/* 博客容器 */
-.blog-container {
-    margin: 40px 0;
-}
-
-/* 博客列表样式 */
-ul.blog {
-    padding: 0;
-    list-style: none;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-}
-
-ul.blog li {
-    /* display: flex; */
-    /* width: 100%; */
-    padding: 25px 20px;
-    border-bottom: 1px solid #f0f0f0;
-    transition: all 0.3s ease;
-    position: relative;
-    margin-bottom: 5px;
-}
-
-ul.blog li:hover {
-    background-color: #f9f9f9;
-    transform: translateX(5px);
-}
-
-ul.blog li:last-child {
-    border-bottom: none;
-}
-
-.post-date {
-    font-size: 0.9em;
-    color: #999;
-    display: block;
-    margin-bottom: 8px;
-    font-weight: normal;
     letter-spacing: 0.5px;
 }
 
-.post-title {
-    font-size: 1.4em;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+    padding: 0; margin: 0;
+}
+
+.nav-links a {
     display: block;
-    line-height: 1.3;
-}
-
-.post-title:hover {
-    color: #666;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: var(--nav-text);
     text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
 }
 
-/* 响应式设计 */
-/* @media (max-width: 768px) {
-    .blog-container {
-        margin: 30px 0;
-    }
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); background: var(--accent-subtle); }
 
-    ul.blog li {
-        padding: 20px 15px;
-    }
+/* 主题切换按钮 */
+.theme-toggle {
+    margin-left: 4px;
+    width: 32px; height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--nav-text);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+}
+.theme-toggle:hover { color: var(--accent); background: var(--accent-subtle); }
 
-    .post-title {
-        font-size: 1.2em;
-    }
+/* ── 页面容器 ─────────────────────────────────── */
+.page-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 76px 24px 80px;
+}
 
-    .post-date {
-        font-size: 0.8em;
-    }
-} */
+/* ── 排版 ─────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+    line-height: 1.3;
+    font-weight: 600;
+}
+h1 { font-size: 1.75rem; margin-bottom: 0.6em; }
+h2 { font-size: 1.35rem; margin: 2em 0 0.6em; }
+h3 { font-size: 1.1rem;  margin: 1.5em 0 0.4em; color: var(--text-secondary); }
+h4 { font-size: 1rem;    margin: 1.2em 0 0.3em; }
 
+p  { margin-bottom: 1em; color: var(--text); }
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+a:hover { color: var(--accent-hover); }
+
+/* ── 列表 ─────────────────────────────────────── */
+ul, ol {
+    margin: 0.6em 0 1.2em;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 0.25em;
+}
+
+/* 无序列表：en-dash 前缀 */
+ul > li {
+    padding-left: 1.4em;
+    position: relative;
+}
+
+ul > li::before {
+    content: "\2013";   /* en-dash */
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+}
+
+/* 有序列表：数字 */
+ol {
+    counter-reset: item;
+}
+
+ol > li {
+    counter-increment: item;
+    padding-left: 1.8em;
+    position: relative;
+}
+
+ol > li::before {
+    content: counter(item) ".";
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* 嵌套列表 */
+li > ul, li > ol {
+    margin: 0.25em 0 0.5em;
+}
+
+/* 任务列表（checkbox） */
+li.task-list-item {
+    padding-left: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4em;
+}
+
+li.task-list-item::before {
+    content: none;
+}
+
+li.task-list-item input[type="checkbox"] {
+    flex-shrink: 0;
+    accent-color: var(--accent);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2em 0;
+}
+
+img { max-width: 100%; height: auto; border-radius: 4px; }
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 1em 0;
+    padding: 0.5em 1em 0.5em 1.2em;
+    color: var(--text-secondary);
+    background: var(--accent-subtle);
+    border-radius: 0 4px 4px 0;
+}
+
+blockquote ul > li::before,
+blockquote ol > li::before {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ── 页脚 ─────────────────────────────────────── */
+.site-footer {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+.site-footer a { color: var(--text-secondary); }
+.site-footer a:hover { color: var(--accent); }
+
+/* ── 博客列表 ──────────────────────────────────── */
+.blog-list { list-style: none; padding: 0; margin: 0; }
+
+.blog-list li { margin-bottom: 0; padding-left: 0; }
+.blog-list li::before { content: none; }
+
+.blog-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text);
+    transition: padding 0.15s, color 0.15s;
+    gap: 16px;
+}
+.blog-list a:hover { color: var(--accent); padding-left: 8px; }
+
+.blog-list .post-title {
+    font-size: 1rem; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.blog-list .post-date {
+    font-size: 0.82rem; color: var(--text-secondary);
+    white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── 移动端 ───────────────────────────────────── */
 @media (max-width: 768px) {
-    body {
-        width: 100%;
-        margin: 20px;
-    }
+    .page-container { padding: 68px 16px 48px; }
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1rem; }
+    .nav-links a { padding: 6px 8px; font-size: 0.78rem; }
+    .blog-list a { flex-direction: column; gap: 2px; padding: 10px 0; }
 }

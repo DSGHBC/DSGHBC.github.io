@@ -9,10 +9,10 @@
 <!-- 内联样式 -->
 <style>
   .details {
-    border: 1px solid #e1e4e8;
+    border: 1px solid var(--border);
     border-radius: 6px;
     margin: 1.5em 0;
-    background: #f6f8fa;
+    background: var(--code-bg);
     overflow: hidden;
   }
 
@@ -21,28 +21,25 @@
     font-weight: 600;
     cursor: pointer;
     user-select: none;
+    color: var(--text);
     transition: background-color 0.2s;
   }
 
   .details summary:hover {
-    background-color: #eaedf1;
+    background: var(--accent-subtle);
   }
 
   .details[open] summary {
-    border-bottom: 1px solid #e1e4e8;
-    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
   }
 
   .details-content {
     padding: 16px;
-    background: white;
+    background: var(--surface);
+    color: var(--text);
   }
 
-  .details-content>*:first-child {
-    margin-top: 0;
-  }
-
-  .details-content>*:last-child {
-    margin-bottom: 0;
-  }
+  .details-content>*:first-child { margin-top: 0; }
+  .details-content>*:last-child  { margin-bottom: 0; }
 </style>

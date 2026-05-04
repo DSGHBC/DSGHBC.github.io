@@ -1,0 +1,37 @@
+<nav class="site-nav">
+    <a href="/" class="nav-brand">DSGH</a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+            <li><a href="/about" {% if page.url == "/about/" %}class="active"{% endif %}>About</a></li>
+            <li><a href="/link" {% if page.url == "/link/" %}class="active"{% endif %}>Link</a></li>
+            <li><a href="/blog" {% if page.url contains "/blog" %}class="active"{% endif %}>Blog</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" title="切换日间/夜间模式" aria-label="切换主题">
+            <i class="fa fa-moon-o" id="themeIcon" aria-hidden="true"></i>
+        </button>
+    </div>
+</nav>
+<script>
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    var icon = document.getElementById('themeIcon');
+    var html = document.documentElement;
+
+    var saved = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = saved || (prefersDark ? 'dark' : 'light');
+
+    function apply(t) {
+        html.setAttribute('data-theme', t);
+        icon.className = t === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
+        localStorage.setItem('theme', t);
+    }
+
+    apply(current);
+    toggle.addEventListener('click', function() {
+        current = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(current);
+    });
+})();
+</script>

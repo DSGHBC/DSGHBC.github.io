@@ -1,205 +1,141 @@
-/* ========== CSS 变量定义 ========== */
-:root {
-  /* 代码块 */
-  --code-bg: #f6f8fa;
-  --code-border: #d0d7de;
-  --code-header-bg: #f0f3f6;
-  --code-fg: #1f2328;
+/* ================================================================
+   代码高亮 — 颜色引用 main.css 的主题变量，日间/夜间自动切换
+   ================================================================ */
 
-  /* 行内代码 */
-  --inline-bg: rgba(175, 184, 193, 0.2);
-  --inline-fg: #1f2328;
-
-  /* 语法高亮 */
-  --token-keyword: #cf222e;
-  --token-string: #0a3069;
-  --token-number: #0550ae;
-  --token-comment: #6e7781;
-  --token-function: #8250df;
-  --token-type: #953800;
-  --token-operator: #cf222e;
-  --token-variable: #1f2328;
-
-  /* 行号 */
-  --line-number: #8c959f;
-  --line-number-border: #d0d7de;
-
-  /* 圆角和字体 */
-  --radius: 8px;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono",
-    Menlo, Consolas, "Liberation Mono", monospace;
+/* ── 代码块容器 ────────────────────────────────── */
+.highlighter-rouge {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code",
+                 ui-monospace, Consolas, monospace;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    background: var(--code-bg);
 }
 
-/* ========== 代码块容器 ========== */
-.highlight {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  border-radius: var(--radius);
-  margin: 1.25em 0;
-  overflow: hidden;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.6;
+/* 代码头部（JS 插入） */
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 12px;
+    background: var(--border-light);
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+}
+.code-lang {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: inherit;
+    letter-spacing: 0.5px;
+}
+.copy-btn {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-family: system-ui, sans-serif;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.6;
+}
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+.copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+/* ── Rouge 表格 ────────────────────────────────── */
+.highlight { background: transparent; }
+.highlight .rouge-table {
+    border-collapse: collapse; width: 100%; margin: 0;
+}
+.highlight .rouge-table td { padding: 0; vertical-align: top; }
+.highlight pre { margin: 0; background: transparent; }
+
+/* 行号区 */
+.highlight .rouge-gutter {
+    width: 1%; white-space: nowrap; text-align: right; user-select: none;
+    background: var(--border-light);
+    border-right: 1px solid var(--border);
+    vertical-align: top;
+}
+.highlight .rouge-gutter pre {
+    padding: 12px 10px 12px 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
 }
 
-.highlight table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 0;
+/* 代码区 */
+.highlight .rouge-code pre {
+    padding: 12px 16px;
+    color: var(--text);
+    overflow-x: auto;
+    line-height: 1.65;
+}
+.highlight > pre {
+    padding: 12px 16px;
+    color: var(--text);
+    overflow-x: auto;
+    line-height: 1.65;
 }
 
-.highlight td {
-  padding: 16px 12px;
-  vertical-align: top;
+/* ================================================================
+   Token 颜色（使用 main.css 的语义色变量）
+   ================================================================ */
+
+/* 关键字 */  .highlight .k, .highlight .kr, .highlight .kv,
+              .highlight .kd, .highlight .kn
+                    { color: var(--accent); font-weight: 600; }
+/* 类型 */    .highlight .kt, .highlight .nc, .highlight .nn
+                    { color: var(--yellow); }
+/* 常量 */    .highlight .kc, .highlight .no
+                    { color: var(--purple); font-weight: 600; }
+/* 字符串 */  .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+              .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
+              .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss
+                    { color: var(--green); }
+/* 数字 */    .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh,
+              .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx
+                    { color: var(--purple); }
+/* 注释 */    .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
+              .highlight .c1, .highlight .cs
+                    { color: var(--text-secondary); font-style: italic; }
+/* 函数名 */  .highlight .nf, .highlight .fm
+                    { color: var(--accent); }
+/* 内置 */    .highlight .nb
+                    { color: var(--accent-hover); }
+/* 预处理器 */.highlight .cp, .highlight .cpf
+                    { color: var(--purple); }
+/* 运算符 */  .highlight .o, .highlight .ow
+                    { color: var(--accent-hover); }
+/* 标识符 */  .highlight .n, .highlight .nv, .highlight .vc,
+              .highlight .vg, .highlight .vi, .highlight .vm, .highlight .ld,
+              .highlight .na
+                    { color: var(--text); }
+/* 标签 */    .highlight .nt
+                    { color: var(--accent); }
+/* 错误 */    .highlight .err
+                    { color: var(--red); background: rgba(191, 97, 106, 0.1);
+                      border-radius: 2px; padding: 0 2px; }
+/* Diff */    .highlight .gi
+                    { background: rgba(163, 190, 140, 0.2); color: var(--green); }
+              .highlight .gd
+                    { background: rgba(191, 97, 106, 0.12); color: var(--red); }
+
+/* ── 行内代码 ──────────────────────────────────── */
+:not(.highlight) > code {
+    background: var(--code-bg);
+    color: var(--inline-code);
+    padding: 0.15em 0.45em;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code",
+                 ui-monospace, Consolas, monospace;
+    font-size: 0.875em;
 }
-
-.highlight pre {
-  margin: 0;
-  /* padding: 0px; */
-  overflow-x: auto;
-  background: transparent;
-}
-
-/* ========== 行号区域 ========== */
-.highlight .gutter,
-.highlight .gl {
-  padding: 16px 12px;
-  text-align: right;
-  user-select: none;
-  background: var(--code-header-bg);
-  border-right: 1px solid var(--line-number-border);
-  color: var(--line-number);
-  /* min-width: 3em; */
-  width: 1%;
-  white-space: nowrap;
-
-}
-
-.highlight .gutter pre,
-.highlight .gl pre {
-  padding: 0;
-}
-
-/* ========== 语法高亮 Token ========== */
-
-/* 关键字 */
-.highlight .k,
-.highlight .kd,
-.highlight .kn,
-.highlight .kp,
-.highlight .kr,
-.highlight .kt,
-.highlight .kv {
-  color: var(--token-keyword);
-  font-weight: 600;
-}
-
-/* 字符串 */
-.highlight .s,
-.highlight .sa,
-.highlight .sb,
-.highlight .sc,
-.highlight .dl,
-.highlight .sd,
-.highlight .s2,
-.highlight .se,
-.highlight .sh,
-.highlight .sx,
-.highlight .s1,
-.highlight .ss {
-  color: var(--token-string);
-}
-
-/* 数字 */
-.highlight .m,
-.highlight .mb,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .il,
-.highlight .mo,
-.highlight .mx,
-.highlight .l,
-.highlight .ld,
-.highlight .nb {
-  color: var(--token-number);
-}
-
-/* 注释 */
-.highlight .c,
-.highlight .ch,
-.highlight .cd,
-.highlight .cm,
-.highlight .cp,
-.highlight .cpf,
-.highlight .c1,
-.highlight .cs {
-  color: var(--token-comment);
-  font-style: italic;
-}
-
-/* 函数名 */
-.highlight .nf,
-.highlight .fm {
-  color: var(--token-function);
-}
-
-/* 类型/类名 */
-.highlight .nc,
-.highlight .no,
-.highlight .nn,
-.highlight .nt,
-.highlight .na {
-  color: var(--token-type);
-}
-
-/* 操作符 */
-.highlight .o,
-.highlight .ow {
-  color: var(--token-operator);
-}
-
-/* 变量 */
-.highlight .n,
-.highlight .nv,
-.highlight .vc,
-.highlight .vg,
-.highlight .vi,
-.highlight .vm {
-  color: var(--token-variable);
-}
-
-/* 错误 */
-.highlight .err {
-  color: #cf222e;
-  background: #ffebe9;
-  padding: 0 2px;
-  border-radius: 2px;
-}
-
-/* Diff 样式 */
-.highlight .gi {
-  background: #dafbe1;
-  color: #116329;
-}
-
-.highlight .gd {
-  background: #ffebe9;
-  color: #82071e;
-}
-
-/* ========== 行内代码 ========== */
-:not(.highlight)>code {
-  background: var(--inline-bg);
-  color: var(--inline-fg);
-  padding: 0.2em 0.4em;
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-}
-
 .highlight code {
-  background: transparent;
-  padding: 0;
-  color: inherit;
+    background: transparent; color: inherit;
+    padding: 0; border-radius: 0;
 }

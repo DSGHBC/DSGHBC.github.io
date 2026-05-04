@@ -3,15 +3,13 @@ layout: page
 title: DSGH's Blog
 ---
 <h1>{{ page.title }}</h1>
-<div class="blog-container">
-  <ul class="blog">
-    {% for post in site.posts %}
-    <a href="{{ post.url }}" title="{{ post.title }}" class="post-title">
-      <li>
-        {{ post.title }}
-        <span class="post-date">{{ post.date | date_to_string }}</span>
-      </li>
+<ul class="blog-list">
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}" title="{{ post.title }}">
+      <span class="post-title">{{ post.title }}</span>
+      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
     </a>
-    {% endfor %}
-  </ul>
-</div>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,56 +1,31 @@
-/* 
-引用块的样式设计
+/*
+   引用块样式 — 颜色引用 main.css 主题变量
 */
 
 blockquote {
-    --quote-color: #dfe3e8;
-    /* 左侧竖条颜色 */
-    --quote-bg: #f6f8fa;
-    /* 背景色 */
-    --quote-width: 4px;
-    /* 竖条粗细 */
-    --radius: 6px;
-    /* 圆角 */
-
     margin: 1.2em 0;
-    padding: .8em 1.2em .8em calc(1.2em + var(--quote-width));
+    padding: .8em 1.2em .8em 1em;
     background: var(--quote-bg);
-    border-left: var(--quote-width) solid var(--quote-color);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    color: #555;
-    font-style: normal;
-    /* position: relative; */
-}
-
-/* 给嵌套引用增加层次感 */
-blockquote blockquote {
-    --quote-color: #c0c8d2;
-    --quote-bg: #fafbfc;
-}
-
-/* 引用内段落去掉多余间距 */
-blockquote p:first-child {
-    margin-top: 0;
-}
-
-blockquote p:last-child {
-    margin-bottom: 0;
-}
-
-/* Obsidian Callout 块样式 */
-.callout {
-    border-left: 4px solid;
+    border-left: 4px solid var(--quote-border);
     border-radius: 0 6px 6px 0;
-    padding: 12px 16px;
-    margin: 1.2em 0;
-    font-style: normal;
+    color: var(--text-secondary);
 }
 
-.callout > *:first-child { margin-top: 0; }
-.callout > *:last-child  { margin-bottom: 0; }
+blockquote blockquote {
+    opacity: 0.85;
+}
 
-.callout-note    { border-color: #0969da; background: #ddf4ff; }
-.callout-info    { border-color: #8250df; background: #fbefff; }
-.callout-tip     { border-color: #1a7f37; background: #dafbe1; }
-.callout-warning { border-color: #9a6700; background: #fff8c5; }
-.callout-danger  { border-color: #cf222e; background: #ffebe9; }
+/* ── Obsidian Callout 兼容 ─────────────────────── */
+.callout {
+    margin: 1em 0;
+    padding: .8em 1.2em;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-subtle);
+}
+
+.callout-title {
+    font-weight: 600;
+    margin-bottom: 0.3em;
+    color: var(--accent);
+}
