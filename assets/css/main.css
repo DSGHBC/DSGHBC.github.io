@@ -37,6 +37,17 @@
     --green:           #10B981;
     --yellow:          #D97706;
     --purple:          #8B5CF6;
+    /* 语法高亮 */
+    --tk-keyword:      #2563EB;
+    --tk-type:         #0891B2;
+    --tk-string:       #059669;
+    --tk-number:       #7C3AED;
+    --tk-comment:      #94A3B8;
+    --tk-function:     #2563EB;
+    --tk-builtin:      #0D9488;
+    --tk-preproc:      #7C3AED;
+    --tk-operator:     #475569;
+    --tk-constant:     #D97706;
 }
 
 /* ── 夜间：Tokyo Night 东京之夜 ───────────────── */
@@ -64,6 +75,17 @@
     --green:           #9ece6a;
     --yellow:          #e0af68;
     --purple:          #bb9af7;
+    /* 语法高亮 */
+    --tk-keyword:      #7aa2f7;
+    --tk-type:         #2AC3DE;
+    --tk-string:       #9ece6a;
+    --tk-number:       #bb9af7;
+    --tk-comment:      #565f89;
+    --tk-function:     #7aa2f7;
+    --tk-builtin:      #73DACA;
+    --tk-preproc:      #bb9af7;
+    --tk-operator:     #89ddff;
+    --tk-constant:     #e0af68;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -326,6 +348,8 @@ blockquote {
     background: var(--accent-subtle);
     border-radius: 0 4px 4px 0;
 }
+
+blockquote > :last-child { margin-bottom: 0; }
 
 blockquote ul > li::before,
 blockquote ol > li::before {
