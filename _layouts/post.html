@@ -14,8 +14,15 @@
 <body>
     {% include nav.html %}
     <div class="post-layout" id="postLayout">
+
+        <!-- 左侧文章列表浮窗 -->
         <aside class="post-sidebar" id="leftSide">
-            <p class="sidebar-label">文章</p>
+            <div class="sidebar-head">
+                <span>文章</span>
+                <button class="sidebar-close" onclick="foldLeft()" title="收起">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
             <ul class="post-list">
                 {% for post in site.posts %}
                 <li class="post-item {% if post.title == page.title %}active{% endif %}">
@@ -27,8 +34,10 @@
                 {% endfor %}
             </ul>
         </aside>
-        <button class="fold-btn fold-btn--left" id="leftBtn" onclick="foldLeft()" title="收起列表">
-            <i class="fa fa-chevron-left" id="leftBtnIcon"></i>
+
+        <!-- 左侧浮动展开钮（侧栏折叠后出现） -->
+        <button class="float-btn float-btn--left" id="leftBtn" onclick="foldLeft()" title="展开文章列表">
+            <i class="fa fa-list-ul"></i>
         </button>
 
         <main class="post-main">
@@ -43,13 +52,22 @@
             <p class="post-back"><a href="/blog">← 返回博客</a></p>
         </main>
 
-        <button class="fold-btn fold-btn--right" id="rightBtn" onclick="foldRight()" title="收起目录">
-            <i class="fa fa-chevron-right" id="rightBtnIcon"></i>
+        <!-- 右侧浮动展开钮（目录折叠后出现） -->
+        <button class="float-btn float-btn--right" id="rightBtn" onclick="foldRight()" title="展开目录">
+            <i class="fa fa-indent"></i>
         </button>
+
+        <!-- 右侧目录浮窗 -->
         <aside class="post-toc" id="rightToc">
-            <p class="sidebar-label">目录</p>
+            <div class="sidebar-head">
+                <span>目录</span>
+                <button class="sidebar-close" onclick="foldRight()" title="收起">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
             <ul id="tocList"></ul>
         </aside>
+
     </div>
 </body>
 </html>

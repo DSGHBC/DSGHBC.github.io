@@ -1,8 +1,8 @@
 /* ================================================================
-   Post 三栏布局 — 颜色引用 main.css 的主题变量
+   Post 三栏布局 — 侧栏自含折叠，浮动展开按钮
    ================================================================ */
 
-/* ── 布局容器 ─────────────────────────────────── */
+/* ── 布局 ─────────────────────────────────────── */
 .post-layout {
     display: flex;
     justify-content: center;
@@ -43,45 +43,66 @@
 
 .post-body { margin-top: 2em; }
 
-.post-back {
-    margin-top: 48px;
-    font-size: 0.9rem;
-}
+.post-back { margin-top: 48px; font-size: 0.9rem; }
 
-/* ── 左侧文章列表 ─────────────────────────────── */
-.post-sidebar {
+/* ── 侧栏通用 ────────────────────────────────── */
+.post-sidebar,
+.post-toc {
     position: fixed;
     top: 52px;
-    left: max(0px, calc((100vw - 860px) / 2 - 240px - 16px));
     width: 240px;
-    height: calc(100vh - 52px);
-    padding: 24px 14px;
+    padding: 20px 16px;
     overflow-y: auto;
-    z-index: 100;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    background: transparent;
+    z-index: 200;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.post-sidebar.folded {
-    transform: translateX(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
+.post-sidebar { left: 0; height: calc(100vh - 52px); }
+.post-toc     { right: 0; max-height: calc(100vh - 52px - 40px); }
 
-.sidebar-label {
-    font-size: 0.7rem;
+/* 折叠状态 */
+.post-sidebar.folded { transform: translateX(-100%); }
+.post-toc.folded     { transform: translateX(100%); }
+
+/* ── 侧栏头部 ─────────────────────────────────── */
+.sidebar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--text-secondary);
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
 }
 
-.post-list { list-style: none; padding: 0; margin: 0; }
+.sidebar-close {
+    width: 24px; height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: color 0.15s, background 0.15s;
+    padding: 0;
+}
 
-/* 屏蔽全局列表标记 */
+.sidebar-close:hover {
+    color: var(--accent);
+    background: var(--accent-subtle);
+}
+
+/* ── 文章列表项 ───────────────────────────────── */
+.post-list { list-style: none; padding: 0; margin: 0; }
 .post-list > li { padding-left: 0; }
 .post-list > li::before { content: none; }
 
@@ -115,107 +136,113 @@
 
 .post-item:hover { background: var(--accent-subtle); }
 .post-item:hover .item-title { color: var(--accent); }
-
 .post-item.active { background: var(--accent-subtle); }
 .post-item.active .item-title { color: var(--accent); font-weight: 600; }
 
-/* ── 折叠按钮 ─────────────────────────────────── */
-.fold-btn {
-    position: fixed;
-    top: calc(52px + 80px);
-    width: 20px; height: 48px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    display: flex;
-    align-items: center; justify-content: center;
-    font-size: 9px; color: var(--text-secondary);
-    z-index: 200; padding: 0;
-    transition: color 0.15s, background 0.15s, left 0.25s ease, right 0.25s ease;
-}
-.fold-btn:hover { background: var(--accent-subtle); color: var(--accent); }
-
-.fold-btn--left {
-    left: max(0px, calc((100vw - 860px) / 2 - 16px));
-    border-radius: 0 4px 4px 0; border-left: none;
-}
-.fold-btn--left.folded { left: 0; }
-
-.fold-btn--right {
-    right: max(0px, calc((100vw - 860px) / 2 - 16px));
-    border-radius: 4px 0 0 4px; border-right: none;
-}
-.fold-btn--right.folded { right: 0; }
-
-/* ── 右侧目录 ─────────────────────────────────── */
-.post-toc {
-    position: fixed;
-    top: 52px;
-    right: max(0px, calc((100vw - 860px) / 2 - 240px - 16px));
-    width: 240px;
-    max-height: calc(100vh - 52px - 40px);
-    padding: 24px 14px;
-    overflow-y: auto;
-    z-index: 100;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    background: transparent;
-}
-
-.post-toc.folded {
-    transform: translateX(100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
+/* ── 目录列表 ─────────────────────────────────── */
 .post-toc ul { list-style: none; padding: 0; margin: 0; }
-
-.post-toc li { padding-left: 0 !important; }
-.post-toc li::before { content: none !important; }
 
 .post-toc li {
     font-size: 0.78rem;
     color: var(--text-secondary);
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 0;
     cursor: pointer;
     line-height: 1.5;
-    transition: background 0.12s, color 0.12s;
+    transition: color 0.15s;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    border-left: 2px solid transparent;
+    margin-bottom: 0;
+    position: relative;
 }
 
-.post-toc li:hover { background: var(--accent-subtle); color: var(--text); }
+/* 正文标记：左侧小圆点 */
+.post-toc li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.post-toc li:hover { color: var(--text); }
 
 .post-toc li.active {
     color: var(--accent);
     font-weight: 500;
-    border-left-color: var(--accent);
+    padding-left: 16px;
+}
+
+.post-toc li.active::before {
+    transform: translateY(-50%) scale(1);
+}
+
+/* ── 浮动展开按钮 ─────────────────────────────── */
+.float-btn {
+    position: fixed;
+    top: calc(52px + 100px);
+    width: 36px; height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: var(--surface);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    z-index: 199;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease,
+                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                color 0.15s,
+                background 0.15s;
+}
+
+.float-btn--left {
+    left: 8px;
+    transform: translateX(-16px) scale(0.8);
+}
+
+.float-btn--right {
+    right: 8px;
+    transform: translateX(16px) scale(0.8);
+}
+
+/* 出现状态：滑入 + 弹跳放大 */
+.float-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
+}
+
+.float-btn:hover {
+    color: var(--accent);
     background: var(--accent-subtle);
 }
 
-/* ── 移动端 ───────────────────────────────────── */
+.float-btn.show:hover {
+    transform: translateX(0) scale(1.1);
+}
+
+/* ── 移动端 — 侧栏默认隐藏，浮钮默认显示 ──────── */
 @media (max-width: 1000px) {
     .post-main { width: 100%; padding: 32px 20px 64px; }
 
-    .post-sidebar {
-        left: 0; width: 260px;
-        background: var(--surface);
-        box-shadow: 2px 0 20px rgba(0,0,0,0.1);
-        transform: translateX(-100%);
-        opacity: 1; pointer-events: auto; z-index: 300;
-    }
-    .post-sidebar.folded { transform: translateX(0); opacity: 1; pointer-events: auto; }
-    .fold-btn--left { left: 0; z-index: 301; }
-    .fold-btn--left.folded { left: 260px; }
+    .post-sidebar { width: 280px; z-index: 300; transform: translateX(-100%); }
+    .post-sidebar.folded { transform: translateX(0); }
 
-    .post-toc {
-        right: 0; width: 260px;
-        background: var(--surface);
-        box-shadow: -2px 0 20px rgba(0,0,0,0.1);
-        transform: translateX(100%);
-        opacity: 1; pointer-events: auto; z-index: 300;
-    }
-    .post-toc.folded { transform: translateX(0); opacity: 1; pointer-events: auto; }
-    .fold-btn--right { right: 0; z-index: 301; }
-    .fold-btn--right.folded { right: 260px; }
+    .post-toc { width: 280px; z-index: 300; transform: translateX(100%); }
+    .post-toc.folded { transform: translateX(0); }
+
+    /* 浮钮默认显示在移动端 */
+    .float-btn--left, .float-btn--right { opacity: 1; pointer-events: auto; }
+
+    /* 侧栏展开时隐藏对应浮钮 */
+    .post-sidebar:not(.folded) ~ .float-btn--left,
+    .float-btn--left.show-only-on-fold { opacity: 0; pointer-events: none; }
 }

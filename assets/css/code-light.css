@@ -1,128 +1,164 @@
 /* ================================================================
-   代码高亮 — 颜色引用 main.css 的主题变量，日间/夜间自动切换
+   代码高亮 — 无边框设计，颜色跟随主题
    ================================================================ */
 
-/* ── 代码块容器 ────────────────────────────────── */
+/* ── 外层容器 ──────────────────────────────────── */
 .highlighter-rouge {
     position: relative;
     margin: 1.5em 0;
     border-radius: 8px;
-    border: 1px solid var(--border);
     overflow: hidden;
     font-family: "JetBrains Mono", "Cascadia Code", "Fira Code",
                  ui-monospace, Consolas, monospace;
     font-size: 0.875rem;
     line-height: 1.65;
     background: var(--code-bg);
+    border: none;
 }
 
-/* 代码头部（JS 插入） */
+/* ── 代码头部 ─────────────────────────────────── */
 .code-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 12px;
-    background: var(--border-light);
+    padding: 6px 14px;
+    background: transparent;
     border-bottom: 1px solid var(--border);
     user-select: none;
 }
+
 .code-lang {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 500;
     color: var(--text-secondary);
     font-family: inherit;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
 }
+
 .copy-btn {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-secondary);
     background: none;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 8px;
+    border: none;
+    padding: 2px 4px;
     cursor: pointer;
     font-family: system-ui, sans-serif;
-    transition: color 0.15s, border-color 0.15s;
+    transition: color 0.15s;
     line-height: 1.6;
 }
-.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
-.copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+.copy-btn:hover { color: var(--accent); }
+.copy-btn.copied { color: var(--green); }
 
 /* ── Rouge 表格 ────────────────────────────────── */
-.highlight { background: transparent; }
-.highlight .rouge-table {
-    border-collapse: collapse; width: 100%; margin: 0;
+.highlight {
+    background: transparent;
 }
-.highlight .rouge-table td { padding: 0; vertical-align: top; }
-.highlight pre { margin: 0; background: transparent; }
 
-/* 行号区 */
-.highlight .rouge-gutter {
-    width: 1%; white-space: nowrap; text-align: right; user-select: none;
-    background: var(--border-light);
-    border-right: 1px solid var(--border);
+.highlight .rouge-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+}
+
+.highlight .rouge-table td {
+    padding: 0;
     vertical-align: top;
 }
+
+.highlight pre {
+    margin: 0;
+    background: transparent;
+}
+
+/* ── 行号区 ────────────────────────────────────── */
+.highlight .rouge-gutter {
+    width: 1%;
+    white-space: nowrap;
+    text-align: right;
+    user-select: none;
+    background: transparent;
+    border-right: 1px solid var(--code-gutter-line);
+    vertical-align: top;
+}
+
 .highlight .rouge-gutter pre {
     padding: 12px 10px 12px 14px;
     color: var(--text-secondary);
     line-height: 1.65;
 }
 
-/* 代码区 */
+/* ── 代码区 ────────────────────────────────────── */
 .highlight .rouge-code pre {
     padding: 12px 16px;
     color: var(--text);
     overflow-x: auto;
     line-height: 1.65;
 }
+
 .highlight > pre {
-    padding: 12px 16px;
+    padding: 14px 16px;
     color: var(--text);
     overflow-x: auto;
     line-height: 1.65;
 }
 
 /* ================================================================
-   Token 颜色（使用 main.css 的语义色变量）
+   Token 颜色
    ================================================================ */
 
-/* 关键字 */  .highlight .k, .highlight .kr, .highlight .kv,
-              .highlight .kd, .highlight .kn
+/* 关键字 */    .highlight .k, .highlight .kr, .highlight .kv,
+                .highlight .kd, .highlight .kn
                     { color: var(--accent); font-weight: 600; }
-/* 类型 */    .highlight .kt, .highlight .nc, .highlight .nn
+
+/* 类型 */      .highlight .kt, .highlight .nc, .highlight .nn
                     { color: var(--yellow); }
-/* 常量 */    .highlight .kc, .highlight .no
+
+/* 常量 */      .highlight .kc, .highlight .no
                     { color: var(--purple); font-weight: 600; }
-/* 字符串 */  .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
-              .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
-              .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss
+
+/* 字符串 */    .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+                .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
+                .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss
                     { color: var(--green); }
-/* 数字 */    .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh,
-              .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx
+
+/* 数字 */      .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh,
+                .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx
                     { color: var(--purple); }
-/* 注释 */    .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
-              .highlight .c1, .highlight .cs
+
+/* 注释 */      .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
+                .highlight .c1, .highlight .cs
                     { color: var(--text-secondary); font-style: italic; }
-/* 函数名 */  .highlight .nf, .highlight .fm
+
+/* 函数名 */    .highlight .nf, .highlight .fm
                     { color: var(--accent); }
-/* 内置 */    .highlight .nb
+
+/* 内置 */      .highlight .nb
                     { color: var(--accent-hover); }
-/* 预处理器 */.highlight .cp, .highlight .cpf
+
+/* 预处理器 */  .highlight .cp, .highlight .cpf
                     { color: var(--purple); }
-/* 运算符 */  .highlight .o, .highlight .ow
+
+/* 运算符 */    .highlight .o, .highlight .ow
                     { color: var(--accent-hover); }
-/* 标识符 */  .highlight .n, .highlight .nv, .highlight .vc,
-              .highlight .vg, .highlight .vi, .highlight .vm, .highlight .ld,
-              .highlight .na
+
+/* 标识符 */    .highlight .n, .highlight .nv, .highlight .vc,
+                .highlight .vg, .highlight .vi, .highlight .vm, .highlight .ld,
+                .highlight .na
                     { color: var(--text); }
-/* 标签 */    .highlight .nt
+
+/* 标签 */      .highlight .nt
                     { color: var(--accent); }
-/* 错误 */    .highlight .err
-                    { color: var(--red); background: rgba(191, 97, 106, 0.1);
+
+/* 错误 */      .highlight .err
+                    { color: var(--red);
+                      background: rgba(191, 97, 106, 0.1);
                       border-radius: 2px; padding: 0 2px; }
-/* Diff */    .highlight .gi
+
+/* Diff */      .highlight .gi
                     { background: rgba(163, 190, 140, 0.2); color: var(--green); }
-              .highlight .gd
+                .highlight .gd
                     { background: rgba(191, 97, 106, 0.12); color: var(--red); }
 
 /* ── 行内代码 ──────────────────────────────────── */
@@ -135,7 +171,10 @@
                  ui-monospace, Consolas, monospace;
     font-size: 0.875em;
 }
+
 .highlight code {
-    background: transparent; color: inherit;
-    padding: 0; border-radius: 0;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
 }

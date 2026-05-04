@@ -3,39 +3,40 @@
    所有颜色集中在此，日间/夜间两套，修改即全局生效
    ================================================================ */
 
-/* ── 日间：Nord 极北 ──────────────────────────── */
+/* ── 日间：纯白 + 天蓝 ────────────────────────── */
 :root, [data-theme="light"] {
     /* 页面底色 */
-    --bg:              #ECEFF4;
+    --bg:              #FFFFFF;
     --surface:         #FFFFFF;
     /* 文字 */
-    --text:            #2E3440;
-    --text-secondary:  #81A1C1;
+    --text:            #1E293B;
+    --text-secondary:  #64748B;
     /* 强调 */
-    --accent:          #5E81AC;
-    --accent-hover:    #88C0D0;
-    --accent-subtle:   rgba(94,129,172,0.08);
+    --accent:          #3B82F6;
+    --accent-hover:    #60A5FA;
+    --accent-subtle:   rgba(59,130,246,0.06);
     /* 边框 */
-    --border:          #D8DEE9;
-    --border-light:    #E5E9F0;
+    --border:          #E5E7EB;
+    --border-light:    #F3F4F6;
     /* 代码 */
-    --code-bg:         #DDE1E8;
-    --inline-code:     #5E81AC;
+    --code-bg:         #F1F5F9;
+    --code-gutter-line: #E2E8F0;
+    --inline-code:     #3B82F6;
     /* 引用块 */
-    --quote-bg:        #DFE3EA;
-    --quote-border:    #C8CDD4;
+    --quote-bg:        #F1F5F9;
+    --quote-border:    #E2E8F0;
     /* 导航栏 */
     --nav-bg:          #FFFFFF;
-    --nav-text:        #4C566A;
-    --nav-active:      #5E81AC;
-    --nav-shadow:      0 1px 0 var(--border);
+    --nav-text:        #64748B;
+    --nav-active:      #3B82F6;
+    --nav-shadow:      0 1px 0 #E5E7EB;
     /* 阴影 */
-    --shadow:          0 1px 3px rgba(0,0,0,0.06);
+    --shadow:          0 1px 3px rgba(0,0,0,0.04);
     /* 特殊色 */
-    --red:             #BF616A;
-    --green:           #A3BE8C;
-    --yellow:          #EBCB8B;
-    --purple:          #B48EAD;
+    --red:             #EF4444;
+    --green:           #10B981;
+    --yellow:          #D97706;
+    --purple:          #8B5CF6;
 }
 
 /* ── 夜间：Tokyo Night 东京之夜 ───────────────── */
@@ -50,6 +51,7 @@
     --border:          #292e42;
     --border-light:    #1e2030;
     --code-bg:         #1e2030;
+    --code-gutter-line: #2f3344;
     --inline-code:     #89ddff;
     --quote-bg:        #1e2030;
     --quote-border:    #292e42;
@@ -71,6 +73,32 @@
 /* ── Reset & Base ─────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; }
 html { -webkit-font-smoothing: antialiased; }
+
+/* ── 滚动条 ───────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 3px;
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) transparent;
+}
 
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto,
