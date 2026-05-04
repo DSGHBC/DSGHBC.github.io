@@ -4,3 +4,4 @@ _site/
 .deleted/
 test/
 scripts/
+.claude/
