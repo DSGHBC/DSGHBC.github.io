@@ -118,6 +118,8 @@ body {
     gap: 2px;
     padding: 0; margin: 0;
 }
+.nav-links > li { padding-left: 0; }
+.nav-links > li::before { content: none; }
 
 .nav-links a {
     display: block;
@@ -224,21 +226,60 @@ li > ul, li > ol {
     margin: 0.25em 0 0.5em;
 }
 
-/* 任务列表（checkbox） */
+/* ── 复选框 ───────────────────────────────────── */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    margin: 0;
+    border: 1.5px solid var(--text-secondary);
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 3px; top: 1px;
+    width: 4px; height: 7px;
+    border: solid #fff;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+input[type="checkbox"]:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+input[type="checkbox"]:disabled:hover {
+    border-color: var(--text-secondary);
+}
+
+/* 任务列表项 */
 li.task-list-item {
     padding-left: 0;
     display: flex;
     align-items: baseline;
-    gap: 0.4em;
+    gap: 0.5em;
 }
 
 li.task-list-item::before {
     content: none;
-}
-
-li.task-list-item input[type="checkbox"] {
-    flex-shrink: 0;
-    accent-color: var(--accent);
 }
 
 hr {
