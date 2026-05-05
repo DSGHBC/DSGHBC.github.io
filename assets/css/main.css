@@ -114,17 +114,67 @@ html { -webkit-font-smoothing: antialiased; }
     background: transparent;
 }
 
+::-webkit-scrollbar-button:single-button,
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:start:increment,
+::-webkit-scrollbar-button:end:decrement,
+::-webkit-scrollbar-button:end:increment,
+::-webkit-scrollbar-button:vertical:start,
+::-webkit-scrollbar-button:vertical:end,
+::-webkit-scrollbar-button:horizontal:start,
+::-webkit-scrollbar-button:horizontal:end {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
 ::-webkit-scrollbar-thumb {
     background: var(--text-secondary);
     border-radius: 3px;
-    opacity: 0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
 }
 
-/* Firefox */
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* 内联滚动区：侧栏 / 目录 / 代码块 */
+.post-sidebar,
+.post-toc,
+.highlight {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) transparent;
+}
+
+.post-sidebar::-webkit-scrollbar,
+.post-toc::-webkit-scrollbar,
+.highlight::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.post-sidebar::-webkit-scrollbar-track,
+.post-toc::-webkit-scrollbar-track,
+.highlight::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.post-sidebar::-webkit-scrollbar-thumb,
+.post-toc::-webkit-scrollbar-thumb,
+.highlight::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 3px;
+}
+
+.post-sidebar::-webkit-scrollbar-thumb:hover,
+.post-toc::-webkit-scrollbar-thumb:hover,
+.highlight::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Firefox 全局 */
 html {
     scrollbar-width: thin;
     scrollbar-color: var(--text-secondary) transparent;
