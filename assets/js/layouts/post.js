@@ -64,7 +64,7 @@ function buildToc() {
         heading.id = 'heading-' + index;
 
         var li = document.createElement('li');
-        li.textContent = heading.textContent;
+        li.innerHTML = heading.innerHTML;
         li.dataset.index = index;
 
         var indent = { H1: 0, H2: 14, H3: 28 }[heading.tagName] || 0;
