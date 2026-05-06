@@ -34,14 +34,27 @@
     color: var(--text);
 }
 
-.post-date {
-    text-align: right;
+.post-meta {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin-bottom: 0;
 }
 
+.post-date, .post-time {
+    color: var(--text-secondary);
+}
+
 .post-body { margin-top: 2em; }
+
+/* 目录跳转偏移（避让固定顶栏） */
+.post-body h1,
+.post-body h2,
+.post-body h3 {
+    scroll-margin-top: 68px;
+}
 
 .post-back { margin-top: 48px; font-size: 0.9rem; }
 
@@ -261,18 +274,66 @@
 
 /* ── 移动端 — 侧栏默认隐藏，浮钮默认显示 ──────── */
 @media (max-width: 1000px) {
-    .post-main { width: 100%; padding: 32px 20px 64px; }
+    .post-main {
+        width: 100%;
+        padding: 24px 16px 48px;
+    }
 
-    .post-sidebar { width: 280px; z-index: 300; transform: translateX(-100%); }
-    .post-sidebar.folded { transform: translateX(0); }
+    .post-header h1 {
+        font-size: 1.4rem;
+        text-align: left;
+    }
 
-    .post-toc { width: 280px; z-index: 300; transform: translateX(100%); }
-    .post-toc.folded { transform: translateX(0); }
+    .post-meta {
+        justify-content: flex-start;
+        font-size: 0.8rem;
+        gap: 8px;
+    }
 
-    /* 浮钮默认显示在移动端 */
-    .float-btn--left, .float-btn--right { opacity: 1; pointer-events: auto; }
+    /* 正文图 */
+    .post-body img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
 
-    /* 侧栏展开时隐藏对应浮钮 */
-    .post-sidebar:not(.folded) ~ .float-btn--left,
-    .float-btn--left.show-only-on-fold { opacity: 0; pointer-events: none; }
+    /* 侧栏 — 全屏抽屉，.folded = 隐藏 */
+    .post-sidebar {
+        width: 85vw;
+        max-width: 300px;
+        z-index: 300;
+        border-radius: 0 8px 8px 0;
+        transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .post-sidebar.folded { transform: translateX(-100%); }
+    .post-sidebar:not(.folded) { transform: translateX(0); }
+
+    .post-toc {
+        width: 85vw;
+        max-width: 300px;
+        z-index: 300;
+        border-radius: 8px 0 0 8px;
+        transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .post-toc.folded { transform: translateX(100%); }
+    .post-toc:not(.folded) { transform: translateX(0); }
+
+    /* 抽屉打开时加遮罩 */
+    .post-layout::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.3);
+        z-index: 250;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+    }
+
+    /* 浮钮 — 跟随 .show 状态 */
+    .float-btn {
+        width: 32px; height: 32px;
+        font-size: 12px;
+    }
 }

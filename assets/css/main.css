@@ -566,10 +566,88 @@ blockquote ol > li::before {
 
 /* ── 移动端 ───────────────────────────────────── */
 @media (max-width: 768px) {
-    .page-container { padding: 68px 16px 48px; }
-    h1 { font-size: 1.4rem; }
-    h2 { font-size: 1.15rem; }
-    h3 { font-size: 1rem; }
-    .nav-links a { padding: 6px 8px; font-size: 0.78rem; }
-    .blog-list a { padding: 10px 0; }
+    .page-container {
+        padding: 68px 16px 48px;
+    }
+
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.1rem;  margin: 1.4em 0 0.5em; }
+    h3 { font-size: 0.95rem; }
+    body { font-size: 15px; }
+
+    /* 导航栏紧凑化 */
+    .site-nav {
+        padding: 0 12px;
+    }
+    .nav-brand {
+        font-size: 0.95rem;
+    }
+    .nav-links { gap: 0; }
+    .nav-links a {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+    .theme-toggle {
+        width: 28px; height: 28px;
+        font-size: 0.85rem;
+    }
+
+    /* 博客列表 */
+    .blog-list a { padding: 14px 0; }
+    .blog-list .post-title { font-size: 0.95rem; }
+    .blog-list .post-excerpt {
+        font-size: 0.8rem;
+        /* 移动端最多两行 */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .blog-list .post-head {
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 4px;
+    }
+
+    /* 代码块缩小 */
+    .highlighter-rouge { font-size: 0.8rem; }
+    .highlight .rouge-gutter pre { padding: 8px 4px 8px 8px; }
+    .highlight .rouge-code pre { padding: 8px 10px; }
+    .code-header { padding: 3px 10px; }
+
+    /* 表格横向滚动 */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 引用块 */
+    blockquote {
+        margin: 0.8em 0;
+        padding: 0.5em 0.8em;
+    }
+
+    /* 页脚 */
+    .site-footer { margin-top: 40px; }
+
+    /* 文章翻页 */
+    .post-nav {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.82rem;
+    }
+    .post-nav-prev, .post-nav-next {
+        max-width: 100%;
+    }
+    .post-nav-next { text-align: left; }
+
+    /* 复选框 */
+    input[type="checkbox"] {
+        width: 0.9em; height: 0.9em;
+    }
+
+    /* 滚动条更窄 */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
 }
