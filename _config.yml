@@ -1,5 +1,14 @@
-author: DSGH 
+author: DSGH
 email: tai0@foxmail.com
+
+title: DSGH的小窝
+tagline: 个人博客
+description: DSGH 的个人博客，记录编程、数学与思考。
+url: https://dsghbc.github.io
+locale: zh_CN
+
+plugins:
+  - jekyll-seo-tag
 
 layout: defalut
 
