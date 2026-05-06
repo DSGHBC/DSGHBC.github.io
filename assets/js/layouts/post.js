@@ -15,6 +15,52 @@ function foldRight() {
     btn.classList.toggle('show', nowFolded);
 }
 
+/* ── 浮钮拖拽 ─────────────────────────────────── */
+function makeDraggable(btn) {
+    var startY = 0, startTop = 0, dragging = false;
+
+    function onStart(e) {
+        dragging = true;
+        var y = e.touches ? e.touches[0].clientY : e.clientY;
+        startY = y;
+        startTop = parseInt(getComputedStyle(btn).top, 10) || btn.getBoundingClientRect().top;
+        btn.style.transition = 'none';
+        btn.style.cursor = 'grabbing';
+        e.preventDefault();
+    }
+
+    function onMove(e) {
+        if (!dragging) return;
+        var y = e.touches ? e.touches[0].clientY : e.clientY;
+        var dy = y - startY;
+        var newTop = startTop + dy;
+        var minY = 56;                           // nav-h + gap
+        var maxY = window.innerHeight - 56;      // bottom gap
+        newTop = Math.max(minY, Math.min(maxY, newTop));
+        btn.style.top = newTop + 'px';
+    }
+
+    function onEnd() {
+        if (!dragging) return;
+        dragging = false;
+        btn.style.transition = '';
+        btn.style.cursor = '';
+        localStorage.setItem(btn.id + '-top', btn.style.top);
+    }
+
+    btn.addEventListener('mousedown', onStart);
+    btn.addEventListener('touchstart', onStart, { passive: false });
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('mouseup', onEnd);
+    document.addEventListener('touchend', onEnd);
+}
+
+function restoreBtnPosition(btn) {
+    var saved = localStorage.getItem(btn.id + '-top');
+    if (saved) btn.style.top = saved;
+}
+
 /* ── 初始状态 ─────────────────────────────────── */
 function initSidebars() {
     var isMobile = window.innerWidth <= 1000;
@@ -168,6 +214,13 @@ window.addEventListener('DOMContentLoaded', function() {
     initCodeBlocks();
     buildToc();
     highlightToc();
+
+    var leftBtn  = document.getElementById('leftBtn');
+    var rightBtn = document.getElementById('rightBtn');
+    makeDraggable(leftBtn);
+    makeDraggable(rightBtn);
+    restoreBtnPosition(leftBtn);
+    restoreBtnPosition(rightBtn);
 });
 
 window.addEventListener('scroll', highlightToc, { passive: true });

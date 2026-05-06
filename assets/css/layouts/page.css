@@ -225,7 +225,7 @@
 /* ── 浮动展开按钮 ─────────────────────────────── */
 .float-btn {
     position: fixed;
-    top: calc(52px + 100px);
+    top: 152px; /* 默认位置，JS 拖拽后 inline style 覆盖 */
     width: 36px; height: 36px;
     border: none;
     border-radius: 50%;
