@@ -52,7 +52,18 @@
             <div class="post-body" id="content">
                 {{ content }}
             </div>
-            <p class="post-back"><a href="/blog">← 返回博客</a></p>
+            <nav class="post-nav">
+                <span class="post-nav-prev">
+                    {%- if page.previous -%}
+                    <a href="{{ page.previous.url }}">← {{ page.previous.title }}</a>
+                    {%- endif -%}
+                </span>
+                <span class="post-nav-next">
+                    {%- if page.next -%}
+                    <a href="{{ page.next.url }}">{{ page.next.title }} →</a>
+                    {%- endif -%}
+                </span>
+            </nav>
         </main>
 
         <!-- 右侧浮动展开钮（目录折叠后出现） -->

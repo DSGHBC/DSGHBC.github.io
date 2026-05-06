@@ -521,24 +521,47 @@ blockquote ol > li::before {
 .blog-list li::before { content: none; }
 
 .blog-list a {
+    display: block;
+    padding: 18px 0 16px;
+    border-bottom: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: padding 0.15s, background 0.15s;
+}
+
+.blog-list .post-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-light);
-    color: var(--text);
-    transition: padding 0.15s, color 0.15s;
     gap: 16px;
+    margin-bottom: 6px;
 }
-.blog-list a:hover { color: var(--accent); padding-left: 8px; }
+
+.blog-list a:hover { padding-left: 12px; background: var(--accent-subtle); }
 
 .blog-list .post-title {
-    font-size: 1rem; font-weight: 500;
+    font-size: 1.05rem;
+    font-weight: 600;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    color: var(--text);
+    transition: color 0.15s;
 }
+.blog-list a:hover .post-title { color: var(--accent); }
+
 .blog-list .post-date {
-    font-size: 0.82rem; color: var(--text-secondary);
-    white-space: nowrap; flex-shrink: 0;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.blog-list .post-excerpt {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-left: 0;
+    transition: color 0.15s;
 }
 
 /* ── 移动端 ───────────────────────────────────── */
@@ -548,5 +571,5 @@ blockquote ol > li::before {
     h2 { font-size: 1.15rem; }
     h3 { font-size: 1rem; }
     .nav-links a { padding: 6px 8px; font-size: 0.78rem; }
-    .blog-list a { flex-direction: column; gap: 2px; padding: 10px 0; }
+    .blog-list a { padding: 10px 0; }
 }

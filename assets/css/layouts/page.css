@@ -45,6 +45,36 @@
 
 .post-back { margin-top: 48px; font-size: 0.9rem; }
 
+/* 上一篇 / 下一篇 */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem;
+}
+
+.post-nav-prev,
+.post-nav-next {
+    max-width: 48%;
+}
+
+.post-nav-prev a,
+.post-nav-next a {
+    color: var(--text-secondary);
+    transition: color 0.15s;
+}
+
+.post-nav-prev a:hover,
+.post-nav-next a:hover {
+    color: var(--accent);
+}
+
+.post-nav-prev { text-align: left; }
+.post-nav-next { text-align: right; margin-left: auto; }
+
 /* ── 侧栏通用 ────────────────────────────────── */
 .post-sidebar,
 .post-toc {

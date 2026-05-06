@@ -7,8 +7,11 @@ title: DSGH's Blog
   {% for post in site.posts %}
   <li>
     <a href="{{ post.url }}" title="{{ post.title }}">
-      <span class="post-title">{{ post.title }}</span>
-      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <span class="post-head">
+        <span class="post-title">{{ post.title }}</span>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </span>
+      <span class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</span>
     </a>
   </li>
   {% endfor %}
